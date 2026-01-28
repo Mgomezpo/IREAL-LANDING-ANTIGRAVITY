@@ -77,11 +77,21 @@
     }
 
     async function loadImages() {
+        // Mobile Optimization: Reduce memory usage by skipping frames
+        const isMobile = window.innerWidth < 768;
+        const step = isMobile ? 2 : 1;
+
+        // Adjust CONFIG for rendering logic if needed, but mainly we need to map 
+        // the "logical" frame to the "loaded" frame.
+        // Simplest approach: Load specific frames into the array, but handle sparse array or re-index.
+        // Better: Keep index same, but checking existence in render.
+
+        state.mobileStep = step; // Save for render logic
+
         const promises = [];
-        for (let i = 1; i <= CONFIG.FRAME_COUNT; i++) {
+        for (let i = 1; i <= CONFIG.FRAME_COUNT; i += step) {
             const p = new Promise((resolve, reject) => {
                 const img = new Image();
-                // Add cache buster to ensure new HD images are loaded
                 img.src = `${CONFIG.IMAGES_FOLDER}/frame_${i}.${CONFIG.IMG_EXTENSION}`;
                 img.onload = () => {
                     state.images[i] = img;
@@ -89,7 +99,7 @@
                 };
                 img.onerror = () => {
                     console.warn(`Failed to load frame ${i}`);
-                    resolve();
+                    resolve(); // Resolve anyway to not break Promise.all
                 };
             });
             promises.push(p);
@@ -108,6 +118,8 @@
 
         } catch (e) {
             console.error("Error loading notebook frames", e);
+            // Fallback: If error, force show content anyway
+            if (loadingOverlay) loadingOverlay.style.display = 'none';
         }
     }
 
@@ -214,7 +226,18 @@
     function renderFrame(index, targetCanvas, targetCtx) {
         if (!targetCanvas || !targetCtx || !state.isLoaded) return;
 
-        const clampedIndex = Math.floor(index); // Floor since we array access
+        let clampedIndex = Math.floor(index);
+
+        // Mobile Fallback: If specific frame wasn't loaded (skipped), find nearest previous one
+        if (state.mobileStep > 1) {
+            // Snap to nearest loaded neighbor (e.g., if step 2, 1,3,5...  if index 2, go to 1)
+            // Or simple math: index - (index % step) ... except starting at 1 makes it tricky.
+            // Let's just search back a few steps
+            while (!state.images[clampedIndex] && clampedIndex > 1) {
+                clampedIndex--;
+            }
+        }
+
         const img = state.images[clampedIndex];
         if (!img) return;
 
