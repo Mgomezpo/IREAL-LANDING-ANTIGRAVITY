@@ -195,8 +195,11 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    /* Was center */
     justify-content: center;
+    padding-top: 120px;
+    /* Clear navbar */
     z-index: 10;
     pointer-events: none;
     /* Default to none, enable when visible */
@@ -206,6 +209,18 @@
 
 .hero-overlay.visible {
     pointer-events: auto;
+}
+
+
+
+/* Force container to ignore grid from styles.css and center content */
+#hero-overlay .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
 }
 
 .hero-text-wrapper {
