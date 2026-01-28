@@ -1,0 +1,948 @@
+/* 1. VARIABLES & RESET */
+:root {
+    /* Paleta - Base */
+    --surface: #FDF6EB;
+    --ink: #000000;
+    --border: #E5E5E5;
+
+    /* Paleta - Acent (Rojos IREAL) */
+    --accent-primary: #9F1522;
+    /* Crimson más vibrante */
+    --accent-hover: #7A0B15;
+
+    /* Paleta - Estados */
+    --status-idea-bg: #EAEAEA;
+    --status-idea-text: #444;
+    --status-process-bg: #FFF4E5;
+    --status-process-text: #B26B00;
+    --status-ready-bg: #E6F4EA;
+    --status-ready-text: #1B8A4B;
+
+    /* Tipografía */
+    --font-serif: 'Fraunces', serif;
+    --font-sans: 'Outfit', sans-serif;
+    --font-hand: 'Reenie Beanie', cursive;
+
+    /* Espaciado */
+    --container-width: 1000px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+    /* Estilo Premium */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    /* Elegancia */
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+/* 2. UTILITIES */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-large {
+    margin-bottom: var(--spacing-md);
+}
+
+.section {
+    padding: var(--spacing-lg) 0;
+    opacity: 0;
+    /* Para animación de entrada */
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Generic Reveal */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.handwritten {
+    font-family: var(--font-hand);
+    font-size: 1.4rem;
+    color: var(--ink);
+    opacity: 0.8;
+    transform: rotate(-2deg);
+    display: inline-block;
+}
+
+/* 3. COMPONENTS: BUTTONS */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--accent-primary);
+    color: #FFF;
+    box-shadow: 0 4px 12px rgba(159, 21, 34, 0.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(159, 21, 34, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 2px 8px rgba(159, 21, 34, 0.3);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background-color: rgba(159, 21, 34, 0.05);
+    transform: translateY(-1px);
+}
+
+.btn-large {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+/* 4. NAVBAR */
+.navbar {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid transparent;
+    /* Sutil si se necesita scroll */
+    /* Fixed to avoid pushing content down and disrupting scroll logic */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(253, 246, 235, 0.95);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 48px;
+    /* Un poco más grande para el logo completo */
+    width: auto;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.nav-links a:not(.btn) {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.nav-links a:not(.btn):hover {
+    color: var(--ink);
+}
+
+/* 5. HERO */
+.hero {
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    overflow: hidden;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: #444;
+    margin-bottom: var(--spacing-md);
+    max-width: 90%;
+}
+
+.hero-cta-wrapper {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.microcopy {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+
+
+.hero-cta-wrapper .microcopy {
+    font-size: 1.5rem;
+    /* Más grande como pidió el usuario */
+    opacity: 1;
+    transform: rotate(-3deg);
+    margin-left: 0.5rem;
+}
+
+/* Hero Visual: Notebook Card */
+.notebook-card {
+    background: #FFF;
+    border: 1px solid var(--border);
+    padding: var(--spacing-md);
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    position: relative;
+    transform: rotate(1deg);
+    /* Toque orgánico */
+}
+
+.handwritten-title {
+    font-family: var(--font-hand);
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    transform: rotate(-1deg);
+}
+
+.notebook-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.notebook-item:last-child {
+    border-bottom: none;
+}
+
+.notebook-item .bullet {
+    color: var(--accent-primary);
+    margin-right: var(--spacing-sm);
+    font-size: 1.2rem;
+}
+
+.notebook-item .text {
+    flex-grow: 1;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+}
+
+.status-chip {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.status-idea {
+    background: var(--status-idea-bg);
+    color: var(--status-idea-text);
+}
+
+.status-process {
+    background: var(--status-process-bg);
+    color: var(--status-process-text);
+}
+
+.status-ready {
+    background: var(--status-ready-bg);
+    color: var(--status-ready-text);
+}
+
+/* 6. REALITY & SOLUTION */
+/* 6. REALITY (SCROLL STORY) SECTION */
+.reality-story-section {
+    position: relative;
+    /* Track height dictates scroll duration */
+    height: 400vh;
+    background-color: transparent;
+}
+
+.story-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.story-sticky-wrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.story-container {
+    padding: var(--spacing-lg) 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Scenes stacking */
+.story-scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.story-scene.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* SCENE 1: Thoughts Scattered */
+.pain-container-scattered {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 60vh;
+    /* Zona de pensamientos */
+    display: flex;
+    /* Flex fallback, items are margins based */
+    flex-direction: column;
+}
+
+.pain-item-float {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    max-width: 400px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.pain-item-float.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pain-item-float:hover {
+    transform: scale(1.02);
+}
+
+.pain-icon {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.pain-item-float p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Positioning logic reuse */
+.p1 {
+    align-self: flex-start;
+    margin-left: 5%;
+    margin-top: 0;
+}
+
+.p2 {
+    align-self: flex-end;
+    margin-right: 10%;
+    margin-top: 5vh;
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.p3 {
+    align-self: flex-start;
+    margin-left: 15%;
+    margin-top: 5vh;
+}
+
+.p4 {
+    align-self: flex-end;
+    margin-right: 5%;
+    margin-top: 5vh;
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+/* SCENE 2: Agitation */
+.agitation-content {
+    max-width: 800px;
+    padding: 0 var(--spacing-md);
+    transform: translateY(20px);
+    transition: transform 0.8s ease;
+}
+
+.active .agitation-content {
+    transform: translateY(0);
+}
+
+.agitation-text {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-style: italic;
+    color: var(--accent-primary);
+    line-height: 1.3;
+}
+
+/* SCENE 3: Solution */
+.solution-content {
+    max-width: 700px;
+    padding: 0 var(--spacing-md);
+    transform: translateY(20px);
+    transition: transform 0.8s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.active .solution-content {
+    transform: translateY(0);
+}
+
+.solution-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+.solution-text {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    /* Un poco más grande para impactar */
+    color: #444;
+    line-height: 1.6;
+}
+
+
+/* 7. SYSTEM DESCEND (SPLIT TIMELINE V6) */
+.split-timeline-section {
+    padding: var(--spacing-xl) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    /* Ritmo vertical amplio */
+}
+
+/* Central Line */
+.central-line {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    bottom: 50px;
+    width: 1px;
+    background-color: #DDD;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* Rows & Grid */
+.timeline-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    /* Separación horizontal del centro */
+    position: relative;
+    z-index: 1;
+}
+
+.col-left {
+    text-align: left;
+    padding-right: 20px;
+}
+
+.col-right {
+    text-align: left;
+    padding-left: 20px;
+}
+
+/* Typography & Blocks */
+
+/* Block 1: Header */
+.tl-title {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.tl-desc {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    max-width: 380px;
+}
+
+/* Block 2: Mantra */
+.tl-subtitle {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--ink);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+/* Nested Items & Markers */
+.tl-subitem {
+    position: relative;
+    padding-left: 25px;
+    /* Espacio para marker */
+}
+
+.tl-marker {
+    position: absolute;
+    left: -20px;
+    /* Fuera del bloque, cerca de la línea si se ajusta */
+    font-size: 1.2rem;
+    color: var(--accent-primary);
+}
+
+.tl-item-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+}
+
+.tl-item-title-large {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+}
+
+.light {
+    color: #888;
+    font-size: 0.9em;
+    font-weight: 400;
+}
+
+.tl-item-text {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+    max-width: 350px;
+}
+
+/* Decoration specific markers */
+.marker-spark {
+    top: 5px;
+    left: -25px;
+}
+
+.marker-scribble {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #AAA;
+    /* Gris sutil */
+}
+
+
+/* Closing */
+.timeline-closing {
+    margin-top: 40px;
+}
+
+/* ANIMATIONS */
+/* Base reveal override for slides */
+.reveal-on-scroll.slide-in-left,
+.reveal-on-scroll.slide-in-right {
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease-out;
+}
+
+/* Initial States */
+.reveal-on-scroll.slide-in-left {
+    transform: translateX(-50px);
+}
+
+.reveal-on-scroll.slide-in-right {
+    transform: translateX(50px);
+}
+
+/* Active States */
+.reveal-on-scroll.visible.slide-in-left {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-on-scroll.visible.slide-in-right {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* SCROLL SCRUBBING ANIMATIONS (Class Toggling Style) */
+.scroll-scrub {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+
+.scroll-scrub.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .central-line {
+        left: 20px;
+        /* Línea a la izquierda */
+    }
+
+    .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-left: 40px;
+        /* Dejar espacio para la línea */
+    }
+
+    .col-left,
+    .col-right {
+        padding: 0;
+        text-align: left;
+    }
+
+    .tl-title {
+        font-size: 2.5rem;
+    }
+
+    .tl-subtitle {
+        font-size: 2rem;
+    }
+
+    /* Mobile Animations: Slide up instead of lateral to avoid horizontal scroll issues */
+    .reveal-on-scroll.slide-in-left,
+    .reveal-on-scroll.slide-in-right {
+        transform: translateY(30px);
+    }
+
+    .reveal-on-scroll.visible.slide-in-left,
+    .reveal-on-scroll.visible.slide-in-right {
+        transform: translateY(0);
+    }
+}
+
+/* 8. FLOW SECTION */
+.flow-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--spacing-md);
+}
+
+.step-item {
+    text-align: center;
+}
+
+.step-number {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 0.2rem;
+}
+
+.step-label {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.step-connector {
+    width: 60px;
+    height: 1px;
+    background-color: var(--border);
+    margin: 0 var(--spacing-md);
+}
+
+/* 9. TESTIMONIAL */
+.testimonial-section {
+    background-color: rgba(0, 0, 0, 0.02);
+    /* Diferenciación muy sutil */
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.testimonial {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-style: italic;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    line-height: 1.4;
+}
+
+/* 10. WHY SECTION (REDISEÑO - NO BLACK BG) */
+.why-section {
+    padding: var(--spacing-xl) 0;
+    /* Fondo papel sigue siendo el body body */
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    text-align: center;
+}
+
+.why-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.why-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 {
+    transition-delay: 0.2s;
+}
+
+.delay-2 {
+    transition-delay: 0.4s;
+}
+
+.magic-symbol {
+    display: block;
+    font-size: 2rem;
+    color: var(--accent-primary);
+    margin-bottom: var(--spacing-sm);
+    animation: float 4s ease-in-out infinite;
+}
+
+.why-item h3 {
+    font-size: 1.6rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+/* 11. FAQ & FINAL CTA */
+.final-cta-section {
+    padding: var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-lg);
+}
+
+.final-cta-title {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.final-cta-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.faq-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-primary);
+}
+
+.faq-item p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* 12. FOOTER */
+.footer {
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid var(--border);
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.footer a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: #888;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* KEYFRAMES */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    :root {
+        --spacing-lg: 3rem;
+        --spacing-xl: 5rem;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-cta-wrapper {
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .benefits-grid,
+    .why-grid,
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .flow-steps {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .step-connector {
+        width: 1px;
+        height: 30px;
+        margin: 0 auto;
+    }
+
+    .nav-links {
+        display: none;
+        /* Simplificado para primera versión */
+    }
+}
+/* Fix for anchor scrolling with fixed navbar */
+#how-it-works, #benefits, #reality-story, #faqs {
+    scroll-margin-top: 120px; /* Adjust based on navbar height + breathing room */
+}
+
+
+/* Force horizontal overflow fix */
+body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    position: relative;
+}
+

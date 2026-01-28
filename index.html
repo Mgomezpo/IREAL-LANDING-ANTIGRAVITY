@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IREAL | El workspace mágico para creadores</title>
+    <meta name="description"
+        content="IREAL reúne ideas, planificación y calendario en un solo cuaderno vivo. Un espacio diseñado para crear con intención, foco y calma.">
+    <link rel="icon" type="image/svg+xml" href="logos/Isotipo2.svg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Outfit:wght@300;400;500&family=Reenie+Beanie&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css?v=12">
+    <link rel="stylesheet" href="scrolling-motion.css">
+    <script src="notebook-scroll.js?v=1005" defer></script>
+</head>
+
+<body>
+
+    <!-- A) NAVBAR -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo-link">
+                <img src="logos/Logo completo.svg" alt="IREAL" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="#benefits">Beneficios</a>
+                <a href="#how-it-works">Cómo funciona</a>
+                <a href="https://ireal-app.com" class="btn btn-secondary">Entrar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- B) HERO -->
+    <!-- NOTEBOOK SCROLL SECTION -->
+    <div class="notebook-scroll-container">
+        <section class="notebook-scroll-section">
+            <div class="notebook-sticky-wrapper">
+                <div style="position: relative; height: 100vh; width: 100vw;">
+                    <canvas id="notebook-canvas" class="notebook-canvas"></canvas>
+                    <div class="notebook-loading">
+                        Loading the notebook
+                    </div>
+                </div>
+
+                <!-- HERO OVERLAY (Appears after animation) -->
+                <div id="hero-overlay" class="hero-overlay">
+                    <div class="container hero-container">
+                        <div class="hero-content">
+                            <div class="hero-text-wrapper">
+                                <h1 class="hero-title">El workspace mágico para creadores de contenido.</h1>
+                                <p class="hero-subtitle">IREAL reúne ideas, planificación y calendario en un solo
+                                    cuaderno vivo.<br>Un espacio diseñado para crear contenido con intención,
+                                    consistencia y flow.</p>
+                                <div class="hero-cta-wrapper">
+                                    <a href="https://ireal-app.com" class="btn btn-primary">Empieza ahora</a>
+                                    <span class="microcopy handwritten">Empieza tu prueba gratuita</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="notebook-content-section" style="padding: 0; min-height: 0;">
+            <!-- Empty content section acting as buffer if needed, or can be removed too if we want immediate Hero -->
+        </section>
+
+
+    </div>
+
+    <!-- ORIGINAL HERO (Now secondary) -->
+
+
+    <!-- C) SECCIÓN: LA REALIDAD ACTUAL (SCROLL STORY) -->
+    <section class="reality-story-section" id="reality-story">
+        <div class="story-track">
+            <div class="story-sticky-wrapper">
+                <div class="container story-container">
+
+                    <!-- SCENE 1: THOUGHTS -->
+                    <div class="story-scene scene-thoughts" id="scene-thoughts">
+                        <h2 class="section-title text-center mb-large">¿Te suena familiar?</h2>
+                        <div style="width: 60px; height: 1px; background: #DDD; margin: -2rem auto 4rem;"></div>
+
+                        <div class="pain-container-scattered">
+                            <div class="pain-item-float p1">
+                                <span class="pain-icon">📱</span>
+                                <p>Guardas ideas de videos en Instagram, TikTok, Notion, Notes y mensajes guardados.</p>
+                            </div>
+                            <div class="pain-item-float p2">
+                                <span class="pain-icon">🤹</span>
+                                <p>Planeas el contenido en una app, escribes el guion en otra y publicas desde otra
+                                    distinta.</p>
+                            </div>
+                            <div class="pain-item-float p3">
+                                <span class="pain-icon">🕵️</span>
+                                <p>Pierdes media hora buscando "esa idea que se te ocurrió para un reel".</p>
+                            </div>
+                            <div class="pain-item-float p4">
+                                <span class="pain-icon">😫</span>
+                                <p>Sientes que crear contenido para redes se volvió más gestión que creatividad.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SCENE 2: AGITATION -->
+                    <div class="story-scene scene-agitation" id="scene-agitation">
+                        <div class="agitation-content text-center">
+                            <p class="agitation-text">El resultado: tu mejor contenido se queda en borradores mentales.
+                                Te cansas antes de publicar. La constancia en redes se vuelve imposible.</p>
+                        </div>
+                    </div>
+
+                    <!-- SCENE 3: SOLUTION -->
+                    <div class="story-scene scene-solution" id="scene-solution">
+                        <div class="solution-content text-center">
+                            <img src="logos/Logo completo.svg" alt="IREAL Logo" class="solution-logo">
+                            <p class="solution-text">
+                                elimina el caos. Un solo espacio donde tus ideas para redes se convierten en contenido
+                                publicado, sin perder
+                                tu estilo.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- D & E) SECCIÓN: SOLUCIÓN Y BENEFICIOS (SYSTEM DESCEND) -->
+    <!-- D & E: SYSTEM DESCEND (SPLIT TIMELINE V6) -->
+    <section class="split-timeline-section" id="benefits">
+        <div class="container timeline-container">
+
+            <!-- CENTRAL LINE DECORATION -->
+            <div class="central-line"></div>
+
+            <!-- ROW UI 1: HEADER LEFT / EMPTY RIGHT -->
+            <div class="timeline-row row-start">
+                <div class="col-left">
+                    <div class="tl-content-block block-header scroll-scrub">
+                        <h2 class="tl-title">Devuelve<br>la intención<br>a tu proceso creativo en redes.</h2>
+                        <p class="tl-desc">IREAL no es otra app de social media.
+                            Es tu santuario creativo para pensar, estructurar y sostener tu contenido en redes sin
+                            quemarte.</p>
+                    </div>
+                </div>
+                <div class="col-right">
+                    <!-- Empty or Spacer -->
+                </div>
+            </div>
+
+            <!-- ROW UI 2: EMPTY LEFT / MANTRA RIGHT -->
+            <div class="timeline-row row-mantra">
+                <div class="col-left">
+                    <!-- Empty -->
+                </div>
+                <div class="col-right">
+                    <div class="tl-content-block block-mantra scroll-scrub">
+                        <h3 class="tl-subtitle">Menos fricción,<br>más presencia.</h3>
+
+                        <!-- NESTED ITEM: IA -->
+                        <div class="tl-subitem">
+                            <span class="tl-marker marker-spark"></span>
+                            <h4 class="tl-item-title">IA que te entiende <span class="light">(no que te
+                                    reemplaza)</span>.</h4>
+                            <p class="tl-item-text">Sugiere estructuras de videos, hooks y formatos.
+                                Detecta patrones en tu estilo y te recuerda ideas que funcionan para tu audiencia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW UI 3: ITEM LEFT / EMPTY RIGHT -->
+            <div class="timeline-row row-item-left">
+                <div class="col-left">
+                    <div class="tl-content-block block-item scroll-scrub">
+                        <h4 class="tl-item-title-large">Todo en<br>un solo lugar.</h4>
+                        <p class="tl-item-text">Captura ideas de contenido, conviértelas en guiones y ordénalas en tu
+                            calendario sin cambiar de app.
+                            Ve tu semana o mes completo de publicaciones de un vistazo.</p>
+                    </div>
+                </div>
+                <div class="col-right">
+                    <!-- Empty -->
+                </div>
+            </div>
+
+            <!-- ROW UI 4: EMPTY LEFT / ITEM RIGHT -->
+            <div class="timeline-row row-item-right">
+                <div class="col-left">
+                    <!-- Empty -->
+                </div>
+                <div class="col-right">
+                    <div class="tl-content-block block-item scroll-scrub">
+                        <span class="tl-marker marker-scribble"></span>
+                        <h4 class="tl-item-title-large">Constancia sin culpa.</h4>
+                        <p class="tl-item-text">Programa cuando tienes energía.
+                            Publica cuando estás listo.
+                            El sistema se adapta a tu ritmo creativo, no al revés.</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- F) SECCIÓN: SISTEMA (FLOW) -->
+    <section class="section flow-section" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title text-center mb-large">Un sistema que fluye contigo</h2>
+            <div class="flow-steps">
+                <div class="step-item">
+                    <span class="step-number">01</span>
+                    <span class="step-label">Idea</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <span class="step-number">02</span>
+                    <span class="step-label">Plan</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <span class="step-number">03</span>
+                    <span class="step-label">Calendario</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <span class="step-number">04</span>
+                    <span class="step-label">Publicación</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- G) PRUEBA SOCIAL -->
+    <section class="section testimonial-section">
+        <div class="container text-center">
+            <blockquote class="testimonial">
+                "Desde que uso IREAL, crear contenido para redes volvió a sentirse personal, no como una tarea
+                pendiente."
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- H) SECCIÓN: POR QUÉ IREAL (REDISEÑO) -->
+    <section class="section why-section">
+        <div class="container">
+            <div class="why-grid">
+                <div class="why-item reveal-on-scroll">
+                    <span class="magic-symbol">✦</span>
+                    <h3>Diseño en calma</h3>
+                    <p>Sin ruido innecesario.
+                        Solo tú, tus ideas y el contenido que quieres publicar.</p>
+                </div>
+                <div class="why-item reveal-on-scroll delay-1">
+                    <span class="magic-symbol">✧</span>
+                    <h3>Sistema creativo para redes</h3>
+                    <p>Ideas, guiones, formatos y tiempos, finalmente conectados.</p>
+                </div>
+                <div class="why-item reveal-on-scroll delay-2">
+                    <span class="magic-symbol">✢</span>
+                    <h3>Foco total</h3>
+                    <p>Solo lo esencial para crear mejor contenido y publicar con intención.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- I) CTA FINAL -->
+    <section class="section final-cta-section">
+        <div class="container text-center">
+            <h2 class="final-cta-title">Tu mejor contenido empieza con una idea clara.</h2>
+            <div class="final-cta-wrapper">
+                <a href="https://ireal-app.com" class="btn btn-primary btn-large">Crear mi cuenta gratis</a>
+                <p class="microcopy">Empieza en menos de un minuto.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- J) FAQS -->
+    <section class="section faq-section" id="faqs">
+        <div class="container">
+            <h2 class="section-title text-center mb-large">Preguntas Frecuentes</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>¿IREAL es para mí?</h4>
+                    <p>Si creas contenido para redes sociales y quieres orden, claridad y constancia, sí.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>¿Reemplaza mis herramientas actuales?</h4>
+                    <p>Centraliza la ideación, planificación y estructura de tu contenido.
+                        Puedes seguir usando tus apps favoritas para publicar si lo deseas.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>¿Tiene costo?</h4>
+                    <p>Puedes empezar totalmente gratis. Tenemos planes para cuando necesites más potencia.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>¿Qué tan rápido puedo empezar?</h4>
+                    <p>En menos de un minuto tendrás tu cuaderno listo para escribir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- K) FOOTER -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>© 2026 IREAL · <a href="#">Privacidad</a> · <a href="#">Términos</a> · <a href="#">Contacto</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>
