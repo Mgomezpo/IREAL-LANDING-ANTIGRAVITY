@@ -82,7 +82,7 @@
             const p = new Promise((resolve, reject) => {
                 const img = new Image();
                 // Add cache buster to ensure new HD images are loaded
-                img.src = `${CONFIG.IMAGES_FOLDER}/frame_${i}.${CONFIG.IMG_EXTENSION}?v=${Date.now()}`;
+                img.src = `${CONFIG.IMAGES_FOLDER}/frame_${i}.${CONFIG.IMG_EXTENSION}`;
                 img.onload = () => {
                     state.images[i] = img;
                     resolve();
