@@ -26,6 +26,13 @@
     let container, scrollSection, canvas, ctx, stickyWrapper, finalCanvas, finalCtx, loadingOverlay, contentSection, heroOverlay;
 
     function init() {
+        // Feature: Static Hero on Mobile
+        // If mobile, disable the complex scroll/canvas logic entirely and just show the Hero content.
+        if (window.innerWidth < 768) {
+            document.body.classList.add('is-mobile-hero');
+            return;
+        }
+
         container = document.querySelector('.notebook-scroll-container');
         if (!container) return; // Guard clause
 
