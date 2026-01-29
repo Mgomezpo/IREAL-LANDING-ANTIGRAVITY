@@ -247,6 +247,7 @@
     font-size: 1.1rem;
     padding: 1rem 2rem;
 }
+
 /* MOBILE STATIC HERO */
 body.is-mobile-hero .notebook-scroll-section {
     height: auto !important;
@@ -262,7 +263,8 @@ body.is-mobile-hero .notebook-sticky-wrapper {
 }
 
 body.is-mobile-hero .notebook-canvas,
-body.is-mobile-hero .notebook-loading {
+body.is-mobile-hero .notebook-loading,
+body.is-mobile-hero .notebook-canvas-wrapper {
     display: none !important;
 }
 
