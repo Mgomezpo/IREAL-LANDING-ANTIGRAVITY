@@ -117,4 +117,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         handleScroll(); // Initial check
     }
+
+    // --- PRICING BILLING TOGGLE (Mensual / Anual) ---
+    const billingToggle = document.querySelector('.pricing .billing-toggle');
+    const pricingGrid = document.querySelector('.pricing .pricing-grid');
+
+    if (billingToggle && pricingGrid) {
+        const opts = billingToggle.querySelectorAll('.bt-opt');
+        const priceEls = pricingGrid.querySelectorAll('.pricing-card .price');
+        const forEls = pricingGrid.querySelectorAll('.pricing-card .for');
+        const ctas = pricingGrid.querySelectorAll('a[data-cta-base]');
+
+        const applyInterval = (interval) => {
+            pricingGrid.setAttribute('data-billing', interval);
+
+            opts.forEach(o => {
+                const active = o.dataset.interval === interval;
+                o.classList.toggle('is-active', active);
+                o.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+
+            priceEls.forEach(priceEl => {
+                const amount = priceEl.dataset['price' + (interval === 'annual' ? 'Annual' : 'Monthly')];
+                const suffix = priceEl.dataset['suffix' + (interval === 'annual' ? 'Annual' : 'Monthly')];
+                if (amount) {
+                    const span = document.createElement('span');
+                    span.textContent = suffix || '';
+                    priceEl.textContent = amount;
+                    priceEl.appendChild(span);
+                }
+                const note = priceEl.dataset['note' + (interval === 'annual' ? 'Annual' : 'Monthly')];
+                let noteEl = priceEl.parentElement.querySelector('.price-note');
+                if (note) {
+                    if (!noteEl) {
+                        noteEl = document.createElement('span');
+                        noteEl.className = 'price-note';
+                        priceEl.insertAdjacentElement('afterend', noteEl);
+                    }
+                    noteEl.textContent = note;
+                } else if (noteEl) {
+                    noteEl.textContent = '';
+                }
+            });
+
+            ctas.forEach(a => {
+                const base = a.dataset.ctaBase;
+                if (base) a.setAttribute('href', base + '&interval=' + interval);
+            });
+
+            try { sessionStorage.setItem('ireal_billing', interval); } catch (_) {}
+        };
+
+        opts.forEach(o => {
+            o.addEventListener('click', () => applyInterval(o.dataset.interval));
+        });
+
+        let initial = 'monthly';
+        try {
+            const saved = sessionStorage.getItem('ireal_billing');
+            if (saved === 'annual' || saved === 'monthly') initial = saved;
+        } catch (_) {}
+        applyInterval(initial);
+    }
 });
