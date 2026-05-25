@@ -37,7 +37,7 @@
             <a href="#pricing">Precios</a>
             <a href="#faq">Preguntas</a>
         </nav>
-        <a href="https://ireal-app.com" class="btn">Empezar gratis <span class="arrow"></span></a>
+        <a href="https://ireal-app.com/signup?trial=1" class="btn">Empezar gratis <span class="arrow"></span></a>
     </header>
 
     <!-- Top scroll progress rail -->
@@ -71,7 +71,7 @@
                     Un espacio diseñado para crear con intención, consistencia y flow.
                 </p>
                 <div class="cta-row">
-                    <a href="https://ireal-app.com" class="btn">Empieza ahora <span class="arrow"></span></a>
+                    <a href="https://ireal-app.com/signup?trial=1" class="btn">Empieza ahora <span class="arrow"></span></a>
                     <span class="micro">prueba gratuita ↗</span>
                 </div>
 
@@ -597,54 +597,88 @@
     <div class="pricing-head reveal">
       <span class="eyebrow">precios</span>
       <h2>Para cada tipo<br/>de <em>creador</em>.</h2>
-      <p class="pricing-intro">Empieza gratis. Crece cuando estés listo.</p>
+      <p class="pricing-intro">Empieza gratis 15 días. Crece cuando estés listo.</p>
+
+      <div class="billing-toggle" role="group" aria-label="Periodo de facturación">
+        <button type="button" class="bt-opt is-active" data-interval="monthly" aria-pressed="true">Mensual</button>
+        <button type="button" class="bt-opt" data-interval="annual" aria-pressed="false">Anual <span class="bt-save">-20%</span></button>
+      </div>
     </div>
 
-    <div class="pricing-grid">
+    <div class="pricing-grid" data-billing="monthly">
 
       <article class="pricing-card reveal">
-        <span class="tier">Gratis</span>
-        <div class="price">$0<span>/mes</span></div>
-        <p class="for">para empezar a explorar</p>
+        <span class="tier">Trial</span>
+        <div class="price"
+             data-price-monthly="$0"
+             data-price-annual="$0"
+             data-suffix-monthly="/15 días"
+             data-suffix-annual="/15 días">
+          $0<span>/15 días</span>
+        </div>
+        <p class="for">para probar IREAL sin compromiso</p>
         <ul class="features">
-          <li>Captura ilimitada de ideas</li>
-          <li>Calendario semanal</li>
-          <li>1 cuenta de redes</li>
-          <li>Plantillas básicas</li>
+          <li>15 días gratis</li>
+          <li>3 scrapes para probar</li>
+          <li>1 plan completo</li>
+          <li>Chat IA ilimitado</li>
+          <li>Sin tarjeta</li>
         </ul>
-        <a href="https://ireal-app.com" class="btn btn-ghost">Empezar gratis</a>
+        <a href="https://ireal-app.com/signup?trial=1"
+           class="btn btn-ghost"
+           data-cta-mode="trial">Empezar 15 días gratis</a>
         <span class="hand-mark">— sin tarjeta ↗</span>
       </article>
 
-      <article class="pricing-card featured reveal delay-1">
-        <span class="badge">más elegido</span>
-        <span class="tier">Creador</span>
-        <div class="price">$9<span>/mes</span></div>
+      <article class="pricing-card reveal delay-1">
+        <span class="tier">Creator</span>
+        <div class="price"
+             data-price-monthly="$12.99"
+             data-price-annual="$10.33"
+             data-suffix-monthly="/mes"
+             data-suffix-annual="/mes"
+             data-note-annual="$124/año · ahorra ~20%">
+          $12.99<span>/mes</span>
+        </div>
         <p class="for">para creadores en crecimiento</p>
         <ul class="features">
-          <li>Todo lo de Gratis</li>
-          <li>IA para hooks y guiones</li>
-          <li>Hasta 5 cuentas de redes</li>
-          <li>Plantillas premium</li>
-          <li>Programación automática</li>
+          <li>10 scrapes al mes</li>
+          <li>5 planes generados al mes</li>
+          <li>Chat IA y regeneraciones ilimitadas</li>
+          <li>Calendario incluido</li>
+          <li>Cancela cuando quieras</li>
         </ul>
-        <a href="https://ireal-app.com" class="btn">Empezar prueba <span class="arrow"></span></a>
-        <span class="hand-mark">— 14 días gratis ↗</span>
+        <a href="https://ireal-app.com/pricing?tier=creator&amp;interval=monthly"
+           class="btn btn-ghost"
+           data-cta-base="https://ireal-app.com/pricing?tier=creator"
+           data-cta-mode="paid">Elegir Creator</a>
+        <span class="hand-mark">— cancela cuando quieras ↗</span>
       </article>
 
-      <article class="pricing-card reveal delay-2">
-        <span class="tier">Estudio</span>
-        <div class="price">$19<span>/mes</span></div>
-        <p class="for">para equipos y agencias</p>
+      <article class="pricing-card featured reveal delay-2">
+        <span class="badge">más popular</span>
+        <span class="tier">Influencer</span>
+        <div class="price"
+             data-price-monthly="$19.99"
+             data-price-annual="$16"
+             data-suffix-monthly="/mes"
+             data-suffix-annual="/mes"
+             data-note-annual="$192/año · ahorra ~20%">
+          $19.99<span>/mes</span>
+        </div>
+        <p class="for">para creadores que viven de contar historias</p>
         <ul class="features">
-          <li>Todo lo de Creador</li>
-          <li>Hasta 5 miembros</li>
-          <li>Analítica avanzada</li>
-          <li>API y exportación</li>
-          <li>Soporte prioritario</li>
+          <li>30 scrapes al mes</li>
+          <li>10 planes generados al mes</li>
+          <li>Chat IA y regeneraciones ilimitadas</li>
+          <li>Calendario incluido</li>
+          <li>Cancela cuando quieras</li>
         </ul>
-        <a href="https://ireal-app.com" class="btn btn-ghost">Hablar con ventas</a>
-        <span class="hand-mark">— a tu medida ↗</span>
+        <a href="https://ireal-app.com/pricing?tier=influencer&amp;interval=monthly"
+           class="btn"
+           data-cta-base="https://ireal-app.com/pricing?tier=influencer"
+           data-cta-mode="paid">Elegir Influencer <span class="arrow"></span></a>
+        <span class="hand-mark">— el más elegido ↗</span>
       </article>
 
     </div>
@@ -671,7 +705,7 @@
   <div class="inner reveal">
     <h2>Tu mejor contenido<br/>empieza con una <em>idea clara</em>.</h2>
     <div class="cta-stack">
-      <a href="https://ireal-app.com" class="btn" style="font-size: 12px; padding: 16px 32px">Crear mi cuenta gratis <span class="arrow"></span></a>
+      <a href="https://ireal-app.com/signup?trial=1" class="btn" style="font-size: 12px; padding: 16px 32px">Crear mi cuenta gratis <span class="arrow"></span></a>
       <span class="micro">empieza en menos de un minuto ↗</span>
     </div>
 

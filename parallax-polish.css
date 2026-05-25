@@ -189,6 +189,55 @@
   font-variation-settings: "opsz" 144;
 }
 
+.parallax-page .pricing .billing-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 28px;
+  padding: 4px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+}
+.parallax-page .pricing .billing-toggle .bt-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease;
+}
+.parallax-page .pricing .billing-toggle .bt-opt.is-active {
+  background: var(--ink);
+  color: var(--paper);
+}
+.parallax-page .pricing .billing-toggle .bt-save {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: var(--crimson);
+  color: var(--paper);
+}
+.parallax-page .pricing .pricing-card .price-note {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--crimson-deep);
+  min-height: 14px;
+}
+
 .parallax-page .pricing .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
