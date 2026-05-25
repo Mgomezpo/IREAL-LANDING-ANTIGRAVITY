@@ -281,13 +281,11 @@
 .parallax-hero .collage .sticky.s2 {
   top: 8%;  right: -8%;
   transform: rotate(4deg);
-  background: var(--sticky-pink);
   width: 200px;
 }
 .parallax-hero .collage .sticky.s3 {
   bottom: 6%; left: -4%;
   transform: rotate(3deg);
-  background: var(--sticky-mint);
   width: 200px;
 }
 .parallax-hero .collage .sticky.s4 {
@@ -301,9 +299,11 @@
 .parallax-hero .collage .app-tile.t3 { bottom: 28%; left: -18%; transform: rotate(-6deg); }
 .parallax-hero .collage .app-tile.t4 { bottom: -4%; left: 44%;  transform: rotate(7deg); }
 
-.parallax-hero .collage .spark-deco.k1 { top: 14%;  left: 28%;  opacity: .7; }
-.parallax-hero .collage .spark-deco.k2 { bottom: 28%; right: 32%; opacity: .55; }
-.parallax-hero .collage .spark-deco.k3 { top: 50%;  left: 6%;   opacity: .4; width: 12px; height: 12px; }
+.parallax-hero .collage .spark-deco.k1 { top: 14%;  left: 30%;  opacity: .7;  width: 14px; height: 14px; }
+.parallax-hero .collage .spark-deco.k2 { bottom: 28%; right: 30%; opacity: .55; width: 12px; height: 12px; }
+.parallax-hero .collage .spark-deco.k3 { top: 50%;  left: 6%;   opacity: .4;  width: 10px; height: 10px; }
+.parallax-hero .collage .spark-deco.k4 { top: 22%;  right: 8%;  opacity: .55; width: 8px;  height: 8px; }
+.parallax-hero .collage .spark-deco.k5 { bottom: 18%; left: 38%; opacity: .45; width: 10px; height: 10px; }
 
 .parallax-hero .layer-back .circle-bg {
   position: absolute;
@@ -361,8 +361,9 @@
   box-shadow: var(--shadow-paper);
   font-variation-settings: "opsz" 144;
 }
-.parallax-hero .sticky.pink { background: var(--sticky-pink); }
-.parallax-hero .sticky.mint { background: var(--sticky-mint); }
+.parallax-hero .sticky.pink  { background: var(--sticky-pink); }
+.parallax-hero .sticky.mint  { background: var(--sticky-mint); }
+.parallax-hero .sticky.cream { background: var(--paper-warm); }
 .parallax-hero .sticky::before {
   content: "";
   position: absolute;
@@ -412,30 +413,7 @@
   position: relative;
 }
 
-.parallax-hero .glyph.heart {
-  width: 42px;
-  height: 38px;
-}
-.parallax-hero .glyph.heart::before,
-.parallax-hero .glyph.heart::after {
-  content: "";
-  position: absolute;
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: currentColor;
-}
-.parallax-hero .glyph.heart::before { top: 0; left: 0; }
-.parallax-hero .glyph.heart::after  { top: 0; right: 0; }
-.parallax-hero .glyph.heart .tip {
-  position: absolute;
-  width: 22px; height: 22px;
-  background: currentColor;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  border-radius: 0 0 6px 0;
-}
-
+/* Abstract content-format glyphs (no platform references) */
 .parallax-hero .glyph.play {
   width: 0; height: 0;
   border-left: 22px solid currentColor;
@@ -443,36 +421,47 @@
   border-bottom: 14px solid transparent;
 }
 
-.parallax-hero .glyph.chat {
-  width: 38px; height: 30px;
-  border-radius: 14px 14px 14px 4px;
-  background: currentColor;
-  position: relative;
-}
-.parallax-hero .glyph.chat::after {
-  content: "";
-  position: absolute;
-  left: 6px;
-  bottom: -6px;
-  width: 8px; height: 8px;
-  background: currentColor;
-  border-radius: 0 0 0 4px;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
+/* Script — three ruled lines = escrito / guion */
+.parallax-hero .glyph.script {
+  width: 34px; height: 26px;
+  background:
+    linear-gradient(currentColor, currentColor) 0   0%   / 100% 3px no-repeat,
+    linear-gradient(currentColor, currentColor) 0   50%  / 86%  3px no-repeat,
+    linear-gradient(currentColor, currentColor) 0   100% / 64%  3px no-repeat;
 }
 
-.parallax-hero .glyph.feed {
-  width: 38px; height: 38px;
-  border: 2.5px solid currentColor;
-  border-radius: 10px;
+/* Wave — five vertical bars = audio */
+.parallax-hero .glyph.wave {
+  width: 36px; height: 30px;
+  background:
+    linear-gradient(currentColor, currentColor) 0%   50% / 4px 45% no-repeat,
+    linear-gradient(currentColor, currentColor) 25%  50% / 4px 80% no-repeat,
+    linear-gradient(currentColor, currentColor) 50%  50% / 4px 100% no-repeat,
+    linear-gradient(currentColor, currentColor) 75%  50% / 4px 70% no-repeat,
+    linear-gradient(currentColor, currentColor) 100% 50% / 4px 38% no-repeat;
+  border-radius: 2px;
 }
-.parallax-hero .glyph.feed::after {
+
+/* Spark-glyph — 4-point star = idea/magia */
+.parallax-hero .glyph.spark-glyph {
+  width: 30px; height: 30px;
+}
+.parallax-hero .glyph.spark-glyph::before,
+.parallax-hero .glyph.spark-glyph::after {
   content: "";
   position: absolute;
   top: 50%; left: 50%;
+  background: currentColor;
+}
+.parallax-hero .glyph.spark-glyph::before {
+  width: 30px; height: 4px;
   transform: translate(-50%, -50%);
-  width: 16px; height: 16px;
-  border: 2px solid currentColor;
-  border-radius: 50%;
+  border-radius: 2px;
+}
+.parallax-hero .glyph.spark-glyph::after {
+  width: 4px; height: 30px;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
 }
 
 .parallax-hero .dot-stamp {
@@ -499,65 +488,192 @@
   transform: rotate(45deg);
 }
 
-/* ---------- Closed notebook illustration ---------- */
+/* ---------- Open notebook illustration (spread) ---------- */
 .parallax-hero .book-stack {
   position: relative;
-  width: 280px;
-  height: 380px;
+  width: 440px;
+  height: 300px;
 }
-.parallax-hero .book-stack .cover {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #1a1610 0%, #0d0a07 100%);
-  border-radius: 4px 12px 12px 4px;
-  box-shadow:
-    inset 0 0 60px rgba(0, 0, 0, 0.5),
-    inset 12px 0 24px rgba(0, 0, 0, 0.6),
-    0 24px 50px -20px rgba(0, 0, 0, 0.55);
+.parallax-hero .collage .book-stack {
+  /* Override the closed-book rotation — open spread reads better straight */
+  transform: translate(-50%, -50%) rotate(-1.5deg);
 }
-.parallax-hero .book-stack .cover::before {
-  content: "";
+.parallax-hero .book-stack .book-halo {
   position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 16px;
-  border-radius: 4px 0 0 4px;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+  top: -22%;
+  left: -14%;
+  width: 128%;
+  height: 144%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(159, 21, 34, 0.10) 0%,
+    rgba(159, 21, 34, 0.03) 40%,
+    transparent 70%);
+  filter: blur(6px);
+  pointer-events: none;
+  z-index: 0;
 }
-.parallax-hero .book-stack .label {
+.parallax-hero .book-stack .page {
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: var(--paper);
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: var(--paper);
+  padding: 26px 28px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  font-family: var(--serif);
+  gap: 12px;
+  z-index: 1;
 }
-.parallax-hero .book-stack .label .mark {
-  font-style: italic;
-  font-weight: 300;
-  font-variation-settings: "opsz" 144;
-  font-size: 48px;
-  letter-spacing: -0.03em;
-  line-height: 1;
+.parallax-hero .book-stack .page-left {
+  left: 0;
+  border-radius: 10px 2px 2px 10px;
+  box-shadow:
+    inset -10px 0 18px -8px rgba(11, 11, 11, 0.18),
+    -14px 18px 30px -18px rgba(11, 11, 11, 0.28);
+  transform: rotate(-0.6deg);
+  transform-origin: right center;
 }
-.parallax-hero .book-stack .label .mark::after { content: "."; color: var(--crimson); }
-.parallax-hero .book-stack .label .sub {
+.parallax-hero .book-stack .page-right {
+  right: 0;
+  border-radius: 2px 10px 10px 2px;
+  box-shadow:
+    inset 10px 0 18px -8px rgba(11, 11, 11, 0.18),
+    14px 18px 30px -18px rgba(11, 11, 11, 0.28);
+  transform: rotate(0.6deg);
+  transform-origin: left center;
+}
+.parallax-hero .book-stack .spine {
+  position: absolute;
+  top: -2px; bottom: -2px;
+  left: 50%; transform: translateX(-50%);
+  width: 4px;
+  background: linear-gradient(
+    to right,
+    rgba(11, 11, 11, 0.22),
+    rgba(11, 11, 11, 0.05) 50%,
+    rgba(11, 11, 11, 0.22));
+  border-radius: 2px;
+  z-index: 2;
+}
+.parallax-hero .book-stack .page-head {
   font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  opacity: 0.6;
+  color: var(--mute);
 }
-.parallax-hero .book-stack::after {
-  content: "";
+.parallax-hero .book-stack .page-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-top: 4px;
+}
+.parallax-hero .book-stack .page-title em {
+  font-style: italic;
+  color: var(--crimson-deep);
+  font-variation-settings: "opsz" 144;
+}
+.parallax-hero .book-stack .page-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+.parallax-hero .book-stack .page-lines span {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--line-2);
+}
+.parallax-hero .book-stack .page-lines span:nth-child(1) { width: 80%; }
+.parallax-hero .book-stack .page-lines span:nth-child(2) { width: 94%; }
+.parallax-hero .book-stack .page-lines span:nth-child(3) {
+  width: 58%;
+  background: var(--crimson);
+  opacity: 0.5;
+}
+.parallax-hero .book-stack .page-list {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.parallax-hero .book-stack .page-list li {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.2;
+  color: var(--ink);
+  font-variation-settings: "opsz" 144;
+}
+.parallax-hero .book-stack .page-list .bullet {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  flex-shrink: 0;
+  background: transparent;
+}
+.parallax-hero .book-stack .page-list .bullet.checked {
+  background: var(--crimson);
+  border-color: var(--crimson);
+}
+.parallax-hero .book-stack .hand-mark {
+  font-family: var(--hand);
+  font-size: 1.5rem;
+  color: var(--crimson-deep);
+  transform: rotate(-3deg);
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* Magic sparkles emanating from the open book */
+.parallax-hero .book-stack .book-spark {
   position: absolute;
-  right: -3px; top: 12px; bottom: 12px;
-  width: 5px;
-  background: repeating-linear-gradient(
-    to bottom, var(--paper) 0 1px, var(--paper-edge) 1px 2px);
-  border-radius: 0 2px 2px 0;
+  background: var(--crimson);
+  transform: rotate(45deg);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 3;
+  animation: book-spark-pulse 3.4s ease-in-out infinite;
+}
+.parallax-hero .book-stack .book-spark.sp1 {
+  width: 12px; height: 12px;
+  top: -18px; left: 38%;
+  animation-delay: 0s;
+}
+.parallax-hero .book-stack .book-spark.sp2 {
+  width: 8px; height: 8px;
+  top: -8px; right: 18%;
+  opacity: 0.5;
+  animation-delay: 0.7s;
+}
+.parallax-hero .book-stack .book-spark.sp3 {
+  width: 7px; height: 7px;
+  top: -26px; left: 18%;
+  opacity: 0.55;
+  animation-delay: 1.4s;
+}
+.parallax-hero .book-stack .book-spark.sp4 {
+  width: 10px; height: 10px;
+  top: -2px; left: 62%;
+  opacity: 0.6;
+  animation-delay: 2.1s;
+}
+@keyframes book-spark-pulse {
+  0%, 100% { transform: rotate(45deg) scale(1);   opacity: var(--alpha, 0.7); }
+  50%      { transform: rotate(45deg) scale(1.35); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .parallax-hero .book-stack .book-spark { animation: none; }
 }
 
 /* ---------- Responsive ---------- */
@@ -581,8 +697,10 @@
     min-height: 440px;
   }
   .parallax-hero .collage .book-stack {
-    transform: translate(-50%, -50%) rotate(-3deg) scale(0.7);
+    transform: translate(-50%, -50%) rotate(-1.5deg) scale(0.6);
   }
+  .parallax-hero .book-stack .page-title { font-size: 36px; }
+  .parallax-hero .book-stack .page-list li { font-size: 15px; }
   .parallax-hero .collage .sticky {
     width: 160px;
     font-size: 14px;
