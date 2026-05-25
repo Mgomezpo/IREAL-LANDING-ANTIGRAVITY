@@ -1,0 +1,650 @@
+/* ============================================================
+   IREAL · PARALLAX POLISH
+   Fixes inconsistencies after integrating the design sections
+   into the existing landing. Loaded LAST so it overrides
+   styles.css + parallax-sections.css where needed.
+   ============================================================ */
+
+/* -----------------------------------------------------------
+   0) Design tokens at :root so they resolve everywhere
+      (PAIN→FAQ sections use them but were missing them
+      because parallax-hero.css only scoped to .parallax-hero).
+   ----------------------------------------------------------- */
+:root {
+  --paper:        #FDF6EB;
+  --paper-warm:   #F4EAD5;
+  --paper-deep:   #EADFC4;
+  --paper-edge:   #D9C9A3;
+  --paper-shade:  #B5A88F;
+
+  --ink-soft:     #1F1A14;
+  --ink-mid:      #2A2520;
+  --mute:         #8B7E6A;
+  --mute-2:       #B5A88F;
+
+  --crimson:      #9F1522;
+  --crimson-deep: #6E0B14;
+  --crimson-ink:  #3E0810;
+  --crimson-wash: rgba(159, 21, 34, 0.08);
+
+  --sticky-yellow: #F2D77B;
+  --sticky-pink:   #E8AAB0;
+  --sticky-mint:   #BFD9C3;
+  --sticky-blue:   #B7C9DA;
+
+  --line:        rgba(11, 11, 11, 0.10);
+  --line-2:      rgba(11, 11, 11, 0.18);
+  --line-strong: rgba(11, 11, 11, 0.32);
+
+  --serif: 'Fraunces', serif;
+  --sans:  'Outfit', sans-serif;
+  --hand:  'Reenie Beanie', cursive;
+  --mono:  'JetBrains Mono', ui-monospace, monospace;
+
+  --shadow-paper: 0 18px 30px -16px rgba(11, 11, 11, 0.18), 0 2px 6px rgba(11, 11, 11, 0.08);
+  --shadow-card:  0 28px 48px -24px rgba(11, 11, 11, 0.28), 0 4px 10px rgba(11, 11, 11, 0.08);
+  --shadow-deep:  0 40px 70px -30px rgba(11, 11, 11, 0.45);
+
+  --ease-out:  cubic-bezier(.2, .7, .2, 1);
+}
+
+/* -----------------------------------------------------------
+   1) Fix the inherited `.section { opacity: 0 }` from styles.css.
+   The existing IntersectionObserver was tied to old markup;
+   for parallax sections we want them visible immediately and
+   let `.reveal` handle inner content animation.
+   ----------------------------------------------------------- */
+.parallax-page .section {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Smooth gradient transition between hero and PAIN to avoid abrupt feel */
+.parallax-page > .pain {
+  background:
+    linear-gradient(to bottom, var(--paper) 0%, #F7EEDB 100%);
+}
+
+/* -----------------------------------------------------------
+   2) Handwritten flair — make scribbles, hand-marks and
+      Reenie Beanie arrows more consistent across sections
+   ----------------------------------------------------------- */
+.parallax-page .hand-mark {
+  font-family: var(--hand);
+  font-size: 1.65rem;
+  color: var(--crimson-deep);
+  line-height: 1;
+  display: inline-block;
+  transform: rotate(-2deg);
+  margin-top: 12px;
+}
+
+.parallax-page .scrib {
+  font-family: var(--hand);
+  font-size: 1.6rem;
+  color: var(--crimson-deep);
+  line-height: 1;
+  display: inline-block;
+  transform: rotate(-3deg);
+}
+
+.parallax-page .micro {
+  font-family: var(--hand);
+  font-size: 1.6rem;
+  color: var(--crimson-deep);
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+
+/* -----------------------------------------------------------
+   3) Chapter dividers — decorative-only visual rhythm
+      (text labels removed to avoid duplicating section eyebrows)
+   ----------------------------------------------------------- */
+.chapter-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 48px 0;
+  z-index: 5;
+  background: var(--paper);
+}
+.chapter-divider::before,
+.chapter-divider::after {
+  content: "";
+  flex: 0 1 140px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(159, 21, 34, 0.35), transparent);
+}
+.chapter-divider .spark-deco {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  background: var(--crimson);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+.chapter-divider .spark-deco.sm {
+  width: 6px;
+  height: 6px;
+  opacity: 1;
+}
+
+/* -----------------------------------------------------------
+   3b) SOLUTION-INTRO — full IREAL logo (hat + wordmark)
+   ----------------------------------------------------------- */
+.parallax-page .solution-intro .solution-logo {
+  display: block;
+  height: 200px;
+  width: auto;
+  margin: 0 auto 32px;
+  filter: drop-shadow(0 22px 36px rgba(0, 0, 0, 0.22));
+}
+@media (max-width: 720px) {
+  .parallax-page .solution-intro .solution-logo { height: 140px; }
+}
+
+/* -----------------------------------------------------------
+   3c) PRICING section
+   ----------------------------------------------------------- */
+.parallax-page .pricing {
+  padding: 140px 0;
+  background: var(--paper);
+}
+.parallax-page .pricing .inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.parallax-page .pricing .pricing-head {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.parallax-page .pricing .pricing-head .eyebrow {
+  justify-content: center;
+}
+.parallax-page .pricing h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 20px 0 16px;
+  color: var(--ink);
+}
+.parallax-page .pricing h2 em {
+  font-style: italic;
+  color: var(--crimson-deep);
+  font-variation-settings: "opsz" 144;
+}
+.parallax-page .pricing .pricing-intro {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--ink-soft);
+  font-variation-settings: "opsz" 144;
+}
+
+.parallax-page .pricing .pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.parallax-page .pricing .pricing-card {
+  background: var(--paper);
+  border: 1px solid var(--line-2);
+  padding: 40px 32px 32px;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out);
+}
+.parallax-page .pricing .pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+.parallax-page .pricing .pricing-card.featured {
+  background: var(--paper-warm);
+  border-color: var(--crimson);
+  border-width: 1.5px;
+  transform: scale(1.02);
+  box-shadow: var(--shadow-card);
+}
+.parallax-page .pricing .pricing-card.featured:hover {
+  transform: scale(1.02) translateY(-4px);
+}
+.parallax-page .pricing .pricing-card .badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--crimson);
+  color: var(--paper);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 10px 18px -6px rgba(159, 21, 34, 0.4);
+}
+.parallax-page .pricing .pricing-card .tier {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--crimson-deep);
+  display: inline-block;
+}
+.parallax-page .pricing .pricing-card .price {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.parallax-page .pricing .pricing-card .price span {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--mute);
+  margin-left: 4px;
+  font-variation-settings: "opsz" 144;
+}
+.parallax-page .pricing .pricing-card .for {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  font-variation-settings: "opsz" 144;
+}
+.parallax-page .pricing .pricing-card .features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+.parallax-page .pricing .pricing-card .features li {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  padding-left: 24px;
+  position: relative;
+}
+.parallax-page .pricing .pricing-card .features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--crimson);
+  font-weight: 600;
+}
+.parallax-page .pricing .pricing-card .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background: var(--crimson);
+  color: var(--paper);
+  border: 0;
+  text-decoration: none;
+  transition: transform .3s var(--ease-out), background .3s ease;
+  cursor: pointer;
+  box-shadow: 0 14px 24px -10px rgba(159, 21, 34, 0.5);
+}
+.parallax-page .pricing .pricing-card .btn:hover {
+  background: var(--crimson-deep);
+  transform: translateY(-2px);
+}
+.parallax-page .pricing .pricing-card .btn.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  box-shadow: none;
+}
+.parallax-page .pricing .pricing-card .btn.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.parallax-page .pricing .pricing-card .hand-mark {
+  align-self: center;
+  font-family: var(--hand);
+  font-size: 1.4rem;
+  color: var(--crimson-deep);
+  margin-top: 6px;
+  transform: rotate(-2deg);
+}
+
+@media (max-width: 900px) {
+  .parallax-page .pricing { padding: 96px 0; }
+  .parallax-page .pricing .inner { padding: 0 24px; }
+  .parallax-page .pricing .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .parallax-page .pricing .pricing-card.featured {
+    transform: none;
+  }
+  .parallax-page .pricing .pricing-card.featured:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* -----------------------------------------------------------
+   4) Floating sparkle decorations for sections that feel bare
+   ----------------------------------------------------------- */
+.parallax-page .floating-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.parallax-page .floating-sparkles .spark-deco,
+.parallax-page .floating-sparkles .dot-stamp {
+  position: absolute;
+}
+
+/* -----------------------------------------------------------
+   5) PAIN — make pain items have more handwritten character
+   ----------------------------------------------------------- */
+.parallax-page .pain-item .hand-tag {
+  font-family: var(--hand);
+  font-size: 1.5rem;
+  color: var(--crimson-deep);
+  display: inline-block;
+  transform: rotate(-2deg);
+  margin-top: 12px;
+  line-height: 1;
+}
+
+/* -----------------------------------------------------------
+   6) SOLUTION-INTRO — pair the brand-write with the actual SVG
+      logo for cross-page consistency
+   ----------------------------------------------------------- */
+.parallax-page .solution-intro .brand-svg {
+  display: block;
+  max-width: 220px;
+  height: auto;
+  margin: 0 auto 20px;
+  opacity: 0.92;
+}
+
+/* -----------------------------------------------------------
+   7) FLOW — connect steps with a hand-drawn dashed line
+   ----------------------------------------------------------- */
+.parallax-page .flow-track {
+  position: relative;
+}
+.parallax-page .flow-step .scribble {
+  font-family: var(--hand);
+  font-size: 1.45rem;
+  color: var(--crimson-deep);
+  display: block;
+  margin: 10px 0 6px;
+  transform: rotate(-2deg);
+  line-height: 1;
+}
+
+/* -----------------------------------------------------------
+   8) TESTIMONIAL — give the quotemark + author more handwritten warmth
+   ----------------------------------------------------------- */
+.parallax-page .testimonial .author-sig {
+  font-family: var(--hand);
+  font-size: 1.6rem;
+  color: var(--crimson-deep);
+  display: inline-block;
+  margin-top: 8px;
+  transform: rotate(-2deg);
+}
+
+/* -----------------------------------------------------------
+   9) WHY — hand-marks already exist; reinforce styling
+   ----------------------------------------------------------- */
+.parallax-page .why-card .hand-mark {
+  margin-top: 18px;
+}
+
+/* -----------------------------------------------------------
+   10) FAQ — give the head some sparkle
+   ----------------------------------------------------------- */
+.parallax-page .faq .head {
+  position: relative;
+}
+
+/* -----------------------------------------------------------
+   11) NAVBAR — Cloud Design's nav with SVG logo plugged in
+   ----------------------------------------------------------- */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 32px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(253, 246, 235, 0.95), rgba(253, 246, 235, 0.85));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  transition: transform .4s var(--ease-out);
+}
+.nav.up { transform: translateY(-100%); }
+
+.nav .brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.nav .brand-logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.nav .links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.nav .links a {
+  color: var(--ink-soft);
+  position: relative;
+  padding: 4px 0;
+  text-decoration: none;
+}
+.nav .links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%;
+  bottom: -2px;
+  height: 1px;
+  background: var(--crimson);
+  transition: right .4s var(--ease-out);
+}
+.nav .links a:hover::after { right: 0; }
+
+/* Nav CTA pill (Empezar gratis) */
+.nav .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background: var(--crimson);
+  color: var(--paper);
+  border: 0;
+  transition: transform .35s var(--ease-out), background .35s ease, box-shadow .35s ease;
+  box-shadow: 0 14px 24px -10px rgba(159, 21, 34, 0.5);
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav .btn:hover {
+  background: var(--crimson-deep);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 32px -10px rgba(159, 21, 34, 0.6);
+}
+.nav .btn .arrow {
+  display: inline-block;
+  width: 12px; height: 1px;
+  background: currentColor;
+  position: relative;
+}
+.nav .btn .arrow::after {
+  content: "";
+  position: absolute;
+  right: 0; top: -3px;
+  width: 7px; height: 7px;
+  border-right: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* -----------------------------------------------------------
+   12) FOOTER — Cloud Design's 4-column footer with SVG logo
+   ----------------------------------------------------------- */
+footer.footer {
+  padding: 100px 0 48px;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+  position: relative;
+}
+footer.footer .footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 60px;
+}
+footer.footer .brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+footer.footer .brand-block .footer-logo {
+  height: 64px;
+  width: auto;
+  display: block;
+  opacity: 0.95;
+}
+footer.footer .brand-block p {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 32ch;
+  margin: 0;
+}
+footer.footer .col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+footer.footer .col .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 8px;
+}
+footer.footer .col a {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink-soft);
+  font-variation-settings: "opsz" 144;
+  text-decoration: none;
+  transition: color .3s ease;
+}
+footer.footer .col a:hover { color: var(--crimson-deep); }
+
+footer.footer .bottom {
+  max-width: 1280px;
+  margin: 60px auto 0;
+  padding: 24px 48px 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+footer.footer .bottom .sig {
+  font-family: var(--hand);
+  color: var(--crimson-deep);
+  font-size: 1.6rem;
+  letter-spacing: normal;
+  text-transform: none;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+/* Responsive: nav + footer */
+@media (max-width: 1080px) {
+  footer.footer .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+}
+@media (max-width: 720px) {
+  .nav { padding: 12px 18px; }
+  .nav .links { display: none; }
+  .nav .brand-logo { height: 36px; }
+  footer.footer { padding: 64px 0 40px; }
+  footer.footer .footer-inner { padding: 0 24px; gap: 40px; }
+  footer.footer .bottom {
+    padding: 24px 24px 0;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+/* -----------------------------------------------------------
+   12) Responsive polish
+   ----------------------------------------------------------- */
+@media (max-width: 720px) {
+  .chapter-divider {
+    padding: 24px 0;
+  }
+  .chapter-divider::before,
+  .chapter-divider::after {
+    flex-basis: 60px;
+  }
+  .footer { padding: 56px 0 40px; }
+}

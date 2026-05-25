@@ -13,311 +13,752 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Outfit:wght@300;400;500&family=Reenie+Beanie&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Outfit:wght@300;400;500&family=Reenie+Beanie&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css?v=12">
-    <link rel="stylesheet" href="scrolling-motion.css">
-    <script src="notebook-scroll.js?v=1005" defer></script>
+    <link rel="stylesheet" href="parallax-hero.css?v=5">
+    <link rel="stylesheet" href="parallax-sections.css?v=1">
+    <link rel="stylesheet" href="parallax-polish.css?v=4">
+    <script src="parallax.js?v=1" defer></script>
 </head>
 
 <body>
 
-    <!-- A) NAVBAR -->
-    <nav class="navbar">
-        <div class="container navbar-container">
-            <a href="#" class="logo-link">
-                <img src="logos/Logo completo.svg" alt="IREAL" class="logo-img">
-            </a>
-            <div class="nav-links">
-                <a href="#benefits">Beneficios</a>
-                <a href="#how-it-works">Cómo funciona</a>
-                <a href="https://ireal-app.com" class="btn btn-secondary">Entrar</a>
-            </div>
-        </div>
-    </nav>
+    <!-- A) NAVBAR — Cloud Design structure with IREAL SVG logo -->
+    <header class="nav" id="nav">
+        <a href="#hero" class="brand">
+            <img src="logos/Logo completo.svg" alt="IREAL" class="brand-logo">
+        </a>
+        <nav class="links">
+            <a href="#manifesto">¿Qué es?</a>
+            <a href="#features">Sistema</a>
+            <a href="#why">Por qué</a>
+            <a href="#pricing">Precios</a>
+            <a href="#faq">Preguntas</a>
+        </nav>
+        <a href="https://ireal-app.com" class="btn">Empezar gratis <span class="arrow"></span></a>
+    </header>
 
-    <!-- B) HERO -->
-    <!-- NOTEBOOK SCROLL SECTION -->
-    <div class="notebook-scroll-container">
-        <section class="notebook-scroll-section">
-            <div class="notebook-sticky-wrapper">
-                <div class="notebook-canvas-wrapper" style="position: relative; height: 100vh; width: 100vw;">
-                    <canvas id="notebook-canvas" class="notebook-canvas"></canvas>
-                    <div class="notebook-loading">
-                        Loading the notebook
-                    </div>
+    <!-- Top scroll progress rail -->
+    <div class="rail"><div class="fill" id="rail-fill"></div></div>
+
+    <!-- B) HERO — PARALLAX -->
+    <section class="parallax-hero hero" id="hero">
+
+        <!-- background layer (slowest) — kept only the soft radial glow, no red dots -->
+        <div class="layer layer-back">
+            <div class="circle-bg" data-parallax data-speed="0.3" data-dy="0.5"></div>
+        </div>
+
+        <!-- handwritten flag — above the notebook collage, right side -->
+        <div class="scribble-flag" data-parallax data-speed="0.85" data-dy="0.6">
+            para creadores de contenido →
+        </div>
+
+        <div class="inner">
+
+            <!-- TEXT side -->
+            <div class="hero-text reveal in">
+                <h1>
+                    El workspace<br />
+                    <em>mágico</em> para<br />
+                    <span class="underline">creadores</span><br />
+                    de contenido.
+                </h1>
+                <p class="subtitle">
+                    IREAL reúne ideas, planificación y calendario en un solo cuaderno vivo.
+                    Un espacio diseñado para crear con intención, consistencia y flow.
+                </p>
+                <div class="cta-row">
+                    <a href="https://ireal-app.com" class="btn">Empieza ahora <span class="arrow"></span></a>
+                    <span class="micro">prueba gratuita ↗</span>
                 </div>
 
-                <!-- HERO OVERLAY (Appears after animation) -->
-                <div id="hero-overlay" class="hero-overlay">
-                    <div class="container hero-container">
-                        <div class="hero-content">
-                            <div class="hero-text-wrapper">
-                                <h1 class="hero-title">El workspace mágico para creadores de contenido.</h1>
-                                <p class="hero-subtitle">IREAL reúne ideas, planificación y calendario en un solo
-                                    cuaderno vivo.<br>Un espacio diseñado para crear contenido con intención,
-                                    consistencia y flow.</p>
-                                <div class="hero-cta-wrapper">
-                                    <a href="https://ireal-app.com" class="btn btn-primary">Empieza ahora</a>
-                                    <span class="microcopy handwritten">Empieza tu prueba gratuita</span>
-                                </div>
-                            </div>
+                <div class="marks">
+                    <div class="mark"><strong>Idea</strong>captura rápida</div>
+                    <div class="mark"><strong>Guion</strong>con IA</div>
+                    <div class="mark"><strong>Calendario</strong>tu ritmo</div>
+                    <div class="mark"><strong>Publica</strong>donde sea</div>
+                </div>
+            </div>
+
+            <!-- COLLAGE side -->
+            <div class="collage" aria-hidden="true">
+
+                <!-- Center: notebook -->
+                <div class="book-stack" data-parallax data-speed="0.85" data-dy="0.5">
+                    <div class="cover">
+                        <div class="label">
+                            <div class="mark">Ireal</div>
+                            <div class="sub">cuaderno · vol. I</div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Stickies -->
+                <div class="sticky s1" data-parallax data-speed="0.7">
+                    Idea para reel
+                    <span class="scribble">→ outfit del día</span>
+                </div>
+                <div class="sticky s2 pink" data-parallax data-speed="0.6">
+                    guion lunes
+                    <span class="scribble">hook + CTA</span>
+                </div>
+                <div class="sticky s3 mint" data-parallax data-speed="0.8">
+                    tema jueves
+                    <span class="scribble">routine matutina</span>
+                </div>
+                <div class="sticky s4" data-parallax data-speed="0.65">
+                    idea TikTok
+                    <span class="scribble">trend de la semana</span>
+                </div>
+
+                <!-- App tiles (abstract) -->
+                <div class="app-tile dark t1" data-parallax data-speed="0.55"><span class="glyph play"></span></div>
+                <div class="app-tile crimson t2" data-parallax data-speed="0.5"><span class="glyph heart"><span class="tip"></span></span></div>
+                <div class="app-tile yellow t3" data-parallax data-speed="0.6"><span class="glyph chat"></span></div>
+                <div class="app-tile mint t4" data-parallax data-speed="0.45"><span class="glyph feed"></span></div>
+
+                <!-- Sparkles -->
+                <span class="spark-deco k1" data-parallax data-speed="0.4" data-rot="2"></span>
+                <span class="spark-deco k2" data-parallax data-speed="0.5" data-rot="-2"></span>
+                <span class="spark-deco k3" data-parallax data-speed="0.6" data-rot="3"></span>
+
             </div>
-        </section>
 
-        <section class="notebook-content-section" style="padding: 0; min-height: 0;">
-            <!-- Empty content section acting as buffer if needed, or can be removed too if we want immediate Hero -->
-        </section>
+        </div>
 
+    </section>
 
+    <!-- ============================================================
+         C–J) PARALLAX SECTIONS · PAIN → FAQ
+         ============================================================ -->
+    <main class="parallax-page">
+
+<div class="chapter-divider" aria-hidden="true">
+    <span class="spark-deco"></span>
+    <span class="spark-deco sm"></span>
+    <span class="spark-deco"></span>
+</div>
+
+<!-- ============================================================
+     PAIN — ¿Te suena familiar?
+     ============================================================ -->
+<section class="section pain" id="pain">
+
+  <!-- Chaos layer (apps scattered around the grid) -->
+  <div class="layer chaos-layer" aria-hidden="true">
+    <div class="app-tile dark c1" data-parallax data-speed="0.6"><span class="glyph play"></span></div>
+    <div class="app-tile crimson c2" data-parallax data-speed="0.5"><span class="glyph heart"><span class="tip"></span></span></div>
+    <div class="app-tile yellow c3" data-parallax data-speed="0.65"><span class="glyph letter">N</span></div>
+    <div class="app-tile mint c4" data-parallax data-speed="0.45"><span class="glyph feed"></span></div>
+    <div class="app-tile c5" data-parallax data-speed="0.55"><span class="glyph chat"></span></div>
+    <div class="app-tile dark c6" data-parallax data-speed="0.4"><span class="glyph bookmark"></span></div>
+
+    <span class="doodle-circle" style="top: 8%; left: 14%;" data-parallax data-speed="0.5"></span>
+    <span class="doodle-x" style="top: 60%; left: 6%;" data-parallax data-speed="0.6"></span>
+    <span class="doodle-x" style="top: 18%; right: 14%;" data-parallax data-speed="0.55"></span>
+    <span class="doodle-circle" style="bottom: 16%; right: 6%; width: 80px; height: 80px;" data-parallax data-speed="0.5"></span>
+  </div>
+
+  <div class="inner">
+
+    <div class="heading reveal">
+      <span class="eyebrow">capítulo i · la realidad</span>
+      <h2>¿Te suena <em>familiar</em>?</h2>
+      <p>la realidad antes de ireal ↓</p>
     </div>
 
-    <!-- ORIGINAL HERO (Now secondary) -->
+    <div class="pain-grid">
 
-
-    <!-- C) SECCIÓN: LA REALIDAD ACTUAL (SCROLL STORY) -->
-    <section class="reality-story-section" id="reality-story">
-        <div class="story-track">
-            <div class="story-sticky-wrapper">
-                <div class="container story-container">
-
-                    <!-- SCENE 1: THOUGHTS -->
-                    <div class="story-scene scene-thoughts" id="scene-thoughts">
-                        <h2 class="section-title text-center mb-large">¿Te suena familiar?</h2>
-                        <div style="width: 60px; height: 1px; background: #DDD; margin: -2rem auto 4rem;"></div>
-
-                        <div class="pain-container-scattered">
-                            <div class="pain-item-float p1">
-                                <span class="pain-icon">📱</span>
-                                <p>Guardas ideas de videos en Instagram, TikTok, Notion, Notes y mensajes guardados.</p>
-                            </div>
-                            <div class="pain-item-float p2">
-                                <span class="pain-icon">🤹</span>
-                                <p>Planeas el contenido en una app, escribes el guion en otra y publicas desde otra
-                                    distinta.</p>
-                            </div>
-                            <div class="pain-item-float p3">
-                                <span class="pain-icon">🕵️</span>
-                                <p>Pierdes media hora buscando "esa idea que se te ocurrió para un reel".</p>
-                            </div>
-                            <div class="pain-item-float p4">
-                                <span class="pain-icon">😫</span>
-                                <p>Sientes que crear contenido para redes se volvió más gestión que creatividad.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SCENE 2: AGITATION -->
-                    <div class="story-scene scene-agitation" id="scene-agitation">
-                        <div class="agitation-content text-center">
-                            <p class="agitation-text">El resultado: tu mejor contenido se queda en borradores mentales.
-                                Te cansas antes de publicar. La constancia en redes se vuelve imposible.</p>
-                        </div>
-                    </div>
-
-                    <!-- SCENE 3: SOLUTION -->
-                    <div class="story-scene scene-solution" id="scene-solution">
-                        <div class="solution-content text-center">
-                            <img src="logos/Logo completo.svg" alt="IREAL Logo" class="solution-logo">
-                            <p class="solution-text">
-                                elimina el caos. Un solo espacio donde tus ideas para redes se convierten en contenido
-                                publicado, sin perder
-                                tu estilo.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+      <article class="pain-item reveal">
+        <span class="tag">Pain · 01 · ideas dispersas</span>
+        <p class="quote">Guardas ideas de videos en Instagram, TikTok, Notion, Notes y mensajes guardados.</p>
+        <div class="apps">
+          <span>reels</span><span>tiktok</span><span>notion</span><span>notes</span><span>guardados</span>
         </div>
-    </section>
+        <span class="hand-tag">— ¿dónde estaba esa idea? ↗</span>
+      </article>
 
-    <!-- D & E) SECCIÓN: SOLUCIÓN Y BENEFICIOS (SYSTEM DESCEND) -->
-    <!-- D & E: SYSTEM DESCEND (SPLIT TIMELINE V6) -->
-    <section class="split-timeline-section" id="benefits">
-        <div class="container timeline-container">
-
-            <!-- CENTRAL LINE DECORATION -->
-            <div class="central-line"></div>
-
-            <!-- ROW UI 1: HEADER LEFT / EMPTY RIGHT -->
-            <div class="timeline-row row-start">
-                <div class="col-left">
-                    <div class="tl-content-block block-header scroll-scrub">
-                        <h2 class="tl-title">Devuelve<br>la intención<br>a tu proceso creativo en redes.</h2>
-                        <p class="tl-desc">IREAL no es otra app de social media.
-                            Es tu santuario creativo para pensar, estructurar y sostener tu contenido en redes sin
-                            quemarte.</p>
-                    </div>
-                </div>
-                <div class="col-right">
-                    <!-- Empty or Spacer -->
-                </div>
-            </div>
-
-            <!-- ROW UI 2: EMPTY LEFT / MANTRA RIGHT -->
-            <div class="timeline-row row-mantra">
-                <div class="col-left">
-                    <!-- Empty -->
-                </div>
-                <div class="col-right">
-                    <div class="tl-content-block block-mantra scroll-scrub">
-                        <h3 class="tl-subtitle">Menos fricción,<br>más presencia.</h3>
-
-                        <!-- NESTED ITEM: IA -->
-                        <div class="tl-subitem">
-                            <span class="tl-marker marker-spark"></span>
-                            <h4 class="tl-item-title">IA que te entiende <span class="light">(no que te
-                                    reemplaza)</span>.</h4>
-                            <p class="tl-item-text">Sugiere estructuras de videos, hooks y formatos.
-                                Detecta patrones en tu estilo y te recuerda ideas que funcionan para tu audiencia.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ROW UI 3: ITEM LEFT / EMPTY RIGHT -->
-            <div class="timeline-row row-item-left">
-                <div class="col-left">
-                    <div class="tl-content-block block-item scroll-scrub">
-                        <h4 class="tl-item-title-large">Todo en<br>un solo lugar.</h4>
-                        <p class="tl-item-text">Captura ideas de contenido, conviértelas en guiones y ordénalas en tu
-                            calendario sin cambiar de app.
-                            Ve tu semana o mes completo de publicaciones de un vistazo.</p>
-                    </div>
-                </div>
-                <div class="col-right">
-                    <!-- Empty -->
-                </div>
-            </div>
-
-            <!-- ROW UI 4: EMPTY LEFT / ITEM RIGHT -->
-            <div class="timeline-row row-item-right">
-                <div class="col-left">
-                    <!-- Empty -->
-                </div>
-                <div class="col-right">
-                    <div class="tl-content-block block-item scroll-scrub">
-                        <span class="tl-marker marker-scribble"></span>
-                        <h4 class="tl-item-title-large">Constancia sin culpa.</h4>
-                        <p class="tl-item-text">Programa cuando tienes energía.
-                            Publica cuando estás listo.
-                            El sistema se adapta a tu ritmo creativo, no al revés.</p>
-                    </div>
-                </div>
-            </div>
-
-
+      <article class="pain-item reveal delay-1">
+        <span class="tag">Pain · 02 · proceso roto</span>
+        <p class="quote">Planeas el contenido en una app, escribes el guion en otra y publicas desde otra distinta.</p>
+        <div class="apps">
+          <span>planner</span><span>docs</span><span>scheduler</span>
         </div>
-    </section>
+        <span class="hand-tag">— tres apps abiertas ↗</span>
+      </article>
 
-    <!-- F) SECCIÓN: SISTEMA (FLOW) -->
-    <section class="section flow-section" id="how-it-works">
-        <div class="container">
-            <h2 class="section-title text-center mb-large">Un sistema que fluye contigo</h2>
-            <div class="flow-steps">
-                <div class="step-item">
-                    <span class="step-number">01</span>
-                    <span class="step-label">Idea</span>
-                </div>
-                <div class="step-connector"></div>
-                <div class="step-item">
-                    <span class="step-number">02</span>
-                    <span class="step-label">Plan</span>
-                </div>
-                <div class="step-connector"></div>
-                <div class="step-item">
-                    <span class="step-number">03</span>
-                    <span class="step-label">Calendario</span>
-                </div>
-                <div class="step-connector"></div>
-                <div class="step-item">
-                    <span class="step-number">04</span>
-                    <span class="step-label">Publicación</span>
-                </div>
+      <article class="pain-item reveal delay-2">
+        <span class="tag">Pain · 03 · pérdida</span>
+        <p class="quote">Pierdes media hora buscando “esa idea que se te ocurrió para un reel”.</p>
+        <div class="apps">
+          <span>buscar</span><span>scroll</span><span>otra vez</span>
+        </div>
+        <span class="hand-tag">— se fue volando ↗</span>
+      </article>
+
+      <article class="pain-item reveal delay-3">
+        <span class="tag">Pain · 04 · gestión &gt; creación</span>
+        <p class="quote">Sientes que crear contenido para redes se volvió más gestión que creatividad.</p>
+        <div class="apps">
+          <span>burnout</span><span>fatiga</span><span>silenciosa</span>
+        </div>
+        <span class="hand-tag">— no era esto ↗</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     AGITATION — el resultado
+     ============================================================ -->
+<section class="section agitation">
+
+  <div class="layer" aria-hidden="true">
+    <span class="scratch" style="top: 12%; left: 8%; transform: rotate(-12deg)" data-parallax data-speed="0.5">×××</span>
+    <span class="scratch" style="bottom: 18%; right: 10%; transform: rotate(8deg)" data-parallax data-speed="0.4">×××</span>
+    <span class="scratch" style="top: 50%; left: 6%; transform: rotate(20deg)" data-parallax data-speed="0.6">×</span>
+    <span class="scratch" style="top: 30%; right: 16%; transform: rotate(-8deg); font-size: 3rem" data-parallax data-speed="0.55">/// ///</span>
+  </div>
+
+  <div class="inner reveal">
+    <span class="label">— el resultado —</span>
+    <h2>
+      Tu mejor contenido se queda en <em>borradores mentales</em>. Te cansas antes de publicar. La constancia se vuelve <em>imposible</em>.
+    </h2>
+  </div>
+</section>
+
+
+<div class="chapter-divider" aria-hidden="true">
+    <span class="spark-deco"></span>
+    <span class="spark-deco sm"></span>
+    <span class="spark-deco"></span>
+</div>
+
+<!-- ============================================================
+     SOLUTION INTRO — IREAL aparece
+     ============================================================ -->
+<section class="section solution-intro" id="solution">
+
+  <div class="layer sparks" aria-hidden="true">
+    <span class="spark-deco s1" data-parallax data-speed="0.5"></span>
+    <span class="spark-deco s2" data-parallax data-speed="0.55"></span>
+    <span class="spark-deco s3" data-parallax data-speed="0.45"></span>
+    <span class="spark-deco s4" data-parallax data-speed="0.6"></span>
+    <span class="spark-deco s5" data-parallax data-speed="0.4"></span>
+    <span class="spark-deco s6" data-parallax data-speed="0.5"></span>
+  </div>
+
+  <div class="inner reveal">
+    <img src="logos/Logo completo.svg" alt="IREAL" class="solution-logo" data-parallax data-speed="0.88">
+    <h2>elimina el caos. Un solo espacio donde tus ideas para redes se convierten en <em>contenido publicado</em>, sin perder tu estilo.</h2>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     MANIFESTO — Devuelve la intención
+     ============================================================ -->
+<section class="section manifesto" id="manifesto">
+  <div class="inner">
+
+    <div class="manifesto-text reveal">
+      <span class="eyebrow">capítulo ii · ¿Qué es?</span>
+      <h2>Devuelve la <em>intención</em> a tu proceso creativo en redes.</h2>
+      <p>IREAL no es otra app de social media. Es tu santuario creativo para pensar, estructurar y sostener tu contenido en redes sin quemarte.</p>
+      <span class="hand-mark">— menos fricción, más presencia ↗</span>
+    </div>
+
+    <div class="illus reveal delay-1" aria-hidden="true">
+
+      <div class="notebook-illus" data-parallax data-speed="0.85">
+        <div class="pg pg-rule">
+          <span class="eyebrow" style="font-size: 9px; letter-spacing: 0.28em; margin-bottom: 14px; display:block">capítulo ii</span>
+          <h3 style="font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 30px; font-variation-settings: 'opsz' 144; line-height: 1.05; color: var(--ink); margin-bottom: 16px">
+            menos fricción, más <em style="color: var(--crimson-deep)">presencia</em>
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="height: 4px; background: var(--line-2); width: 80%; border-radius: 2px"></div>
+            <div style="height: 4px; background: var(--line-2); width: 92%; border-radius: 2px"></div>
+            <div style="height: 4px; background: var(--crimson); opacity: 0.5; width: 64%; border-radius: 2px"></div>
+          </div>
+        </div>
+        <div class="pg" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start">
+          <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.28em; color: var(--mute); text-transform: uppercase">ideas · 12 abr</div>
+          <div style="display: flex; gap: 8px; align-items: center; font-family: var(--serif); font-style: italic; font-size: 18px; font-variation-settings: 'opsz' 144">
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--crimson)"></span> reel routine mañana
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center; font-family: var(--serif); font-style: italic; font-size: 18px; font-variation-settings: 'opsz' 144">
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--paper-edge); border: 1.5px solid var(--ink)"></span> serie de tips
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center; font-family: var(--serif); font-style: italic; font-size: 18px; font-variation-settings: 'opsz' 144">
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--paper-edge); border: 1.5px solid var(--ink)"></span> hablar de mi día
+          </div>
+          <span style="font-family: var(--hand); font-size: 1.4rem; color: var(--crimson-deep); margin-top: 12px; transform: rotate(-3deg); display: inline-block">+ guarda en 1 click</span>
+        </div>
+      </div>
+
+      <div class="floating-page p1" data-parallax data-speed="0.65">
+        <div style="font-family: var(--mono); font-size: 9px; color: var(--crimson-deep); letter-spacing: 0.22em">guion</div>
+        <div class="lines">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="floating-page p2" data-parallax data-speed="0.55">
+        <div style="font-family: var(--mono); font-size: 9px; color: var(--crimson-deep); letter-spacing: 0.22em">hooks</div>
+        <div class="lines">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <span class="spark-deco" style="top: 8%; left: -4%; width: 14px; height: 14px;" data-parallax data-speed="0.4"></span>
+      <span class="spark-deco" style="bottom: 14%; right: 30%; width: 12px; height: 12px;" data-parallax data-speed="0.5"></span>
+    </div>
+
+  </div>
+</section>
+
+
+<div class="chapter-divider" aria-hidden="true">
+    <span class="spark-deco"></span>
+    <span class="spark-deco sm"></span>
+    <span class="spark-deco"></span>
+</div>
+
+<!-- ============================================================
+     FEATURES — IA / Todo en un lugar / Constancia
+     ============================================================ -->
+<section class="section feature" id="features">
+  <div class="inner">
+
+    <div class="reveal">
+      <div class="num">i</div>
+      <span class="eyebrow">característica 01</span>
+      <h2 style="margin-top: 16px">IA que te <em>entiende</em><br/>(no que te reemplaza).</h2>
+      <p>Sugiere estructuras de videos, hooks y formatos. Detecta patrones en tu estilo y te recuerda ideas que funcionan para tu audiencia.</p>
+      <div class="chips">
+        <span>hooks</span><span>estructuras</span><span>tu voz</span><span>patrones</span>
+      </div>
+    </div>
+
+    <div class="feature-illus reveal delay-1" aria-hidden="true">
+      <div class="f-illus-ai">
+        <div class="page-stack" data-parallax data-speed="0.85">
+          <div class="head">borrador · reel</div>
+          <div class="title">3 errores que cometí publicando reels</div>
+
+          <div class="suggestion">
+            <span class="ai-tag">ai</span>
+            <p>Empieza con la duda más común: "¿por qué tu reel no llega a más gente?". Funciona en tu audiencia.</p>
+          </div>
+
+          <div class="suggestion">
+            <span class="ai-tag">ai</span>
+            <p>Cierra con CTA suave — "comenta cuál te pasó" — convierte mejor que pedir like directo.</p>
+          </div>
+        </div>
+
+        <div class="post-it" data-parallax data-speed="0.7">
+          recuerda
+          <span>la audiencia<br/>quiere salida fácil</span>
+        </div>
+
+        <span class="spark-deco" style="position: absolute; top: -10px; left: 20%; width: 14px; height: 14px;" data-parallax data-speed="0.55"></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section feature warm reverse">
+  <div class="inner">
+
+    <div class="reveal">
+      <div class="num">ii</div>
+      <span class="eyebrow">característica 02</span>
+      <h2 style="margin-top: 16px">Todo en un<br/><em>solo lugar</em>.</h2>
+      <p>Captura ideas de contenido, conviértelas en guiones y ordénalas en tu calendario sin cambiar de app. Ve tu semana o mes completo de publicaciones de un vistazo.</p>
+      <div class="chips">
+        <span>ideas</span><span>guiones</span><span>calendario</span><span>1 app</span>
+      </div>
+    </div>
+
+    <div class="feature-illus reveal delay-1" aria-hidden="true">
+      <div class="f-illus-all">
+        <div class="panel" data-parallax data-speed="0.85">
+          <div class="tabs">
+            <span class="tab">ideas</span>
+            <span class="tab active">guiones</span>
+            <span class="tab">calendario</span>
+            <span class="tab">publica</span>
+          </div>
+          <div class="content">
+            <div class="row done">
+              <span class="bullet"></span>
+              <span class="title">reel — morning routine</span>
+              <span class="meta">lun · 9:00</span>
             </div>
-        </div>
-    </section>
-
-    <!-- G) PRUEBA SOCIAL -->
-    <section class="section testimonial-section">
-        <div class="container text-center">
-            <blockquote class="testimonial">
-                "Desde que uso IREAL, crear contenido para redes volvió a sentirse personal, no como una tarea
-                pendiente."
-            </blockquote>
-        </div>
-    </section>
-
-    <!-- H) SECCIÓN: POR QUÉ IREAL (REDISEÑO) -->
-    <section class="section why-section">
-        <div class="container">
-            <div class="why-grid">
-                <div class="why-item reveal-on-scroll">
-                    <span class="magic-symbol">✦</span>
-                    <h3>Diseño en calma</h3>
-                    <p>Sin ruido innecesario.
-                        Solo tú, tus ideas y el contenido que quieres publicar.</p>
-                </div>
-                <div class="why-item reveal-on-scroll delay-1">
-                    <span class="magic-symbol">✧</span>
-                    <h3>Sistema creativo para redes</h3>
-                    <p>Ideas, guiones, formatos y tiempos, finalmente conectados.</p>
-                </div>
-                <div class="why-item reveal-on-scroll delay-2">
-                    <span class="magic-symbol">✢</span>
-                    <h3>Foco total</h3>
-                    <p>Solo lo esencial para crear mejor contenido y publicar con intención.</p>
-                </div>
+            <div class="row done">
+              <span class="bullet"></span>
+              <span class="title">tiktok — outfit del día</span>
+              <span class="meta">mar · 19:00</span>
             </div>
-        </div>
-    </section>
-
-    <!-- I) CTA FINAL -->
-    <section class="section final-cta-section">
-        <div class="container text-center">
-            <h2 class="final-cta-title">Tu mejor contenido empieza con una idea clara.</h2>
-            <div class="final-cta-wrapper">
-                <a href="https://ireal-app.com" class="btn btn-primary btn-large">Crear mi cuenta gratis</a>
-                <p class="microcopy">Empieza en menos de un minuto.</p>
+            <div class="row">
+              <span class="bullet"></span>
+              <span class="title">serie tips · parte 1</span>
+              <span class="meta">jue · 12:00</span>
             </div>
-        </div>
-    </section>
-
-    <!-- J) FAQS -->
-    <section class="section faq-section" id="faqs">
-        <div class="container">
-            <h2 class="section-title text-center mb-large">Preguntas Frecuentes</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h4>¿IREAL es para mí?</h4>
-                    <p>Si creas contenido para redes sociales y quieres orden, claridad y constancia, sí.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>¿Reemplaza mis herramientas actuales?</h4>
-                    <p>Centraliza la ideación, planificación y estructura de tu contenido.
-                        Puedes seguir usando tus apps favoritas para publicar si lo deseas.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>¿Tiene costo?</h4>
-                    <p>Puedes empezar totalmente gratis. Tenemos planes para cuando necesites más potencia.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>¿Qué tan rápido puedo empezar?</h4>
-                    <p>En menos de un minuto tendrás tu cuaderno listo para escribir.</p>
-                </div>
+            <div class="row">
+              <span class="bullet"></span>
+              <span class="title">behind the scenes</span>
+              <span class="meta">vie · 18:00</span>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- K) FOOTER -->
+        <div class="float-tile t1" data-parallax data-speed="0.65"><span class="glyph spark"></span></div>
+        <div class="float-tile t2" data-parallax data-speed="0.55"><span class="glyph feed"></span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section feature">
+  <div class="inner">
+
+    <div class="reveal">
+      <div class="num">iii</div>
+      <span class="eyebrow">característica 03</span>
+      <h2 style="margin-top: 16px">Constancia<br/>sin <em>culpa</em>.</h2>
+      <p>Programa cuando tienes energía. Publica cuando estás listo. El sistema se adapta a tu ritmo creativo, no al revés.</p>
+      <div class="chips">
+        <span>tu ritmo</span><span>sin presión</span><span>flexible</span>
+      </div>
+    </div>
+
+    <div class="feature-illus reveal delay-1" aria-hidden="true">
+      <div class="f-illus-rhythm">
+        <div class="cal-card" data-parallax data-speed="0.85">
+          <div class="cal-head">
+            <span class="month">noviembre <em>2026</em></span>
+            <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; color: var(--mute); text-transform: uppercase">publicado</span>
+          </div>
+          <div class="cal-grid-mini">
+            <!-- 28 days, generated inline (will be filled by script for animation) -->
+          </div>
+        </div>
+
+        <div class="energy" data-parallax data-speed="0.7">
+          publica cuando
+          <span>estés lista ↗</span>
+        </div>
+
+        <span class="spark-deco" style="position: absolute; top: -8px; right: 12%; width: 12px; height: 12px;" data-parallax data-speed="0.55"></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SISTEMA FLOW — Idea → Plan → Calendario → Publicación
+     ============================================================ -->
+<section class="section flow" id="flow">
+  <div class="inner">
+
+    <div class="reveal">
+      <span class="eyebrow">capítulo iii · sistema</span>
+      <h2>Un sistema que<br/><em>fluye</em> contigo.</h2>
+    </div>
+
+    <div class="flow-track">
+
+      <article class="flow-step reveal">
+        <span class="glyph spark" style="width: 28px; height: 28px;"></span>
+        <span class="step-num">paso 01</span>
+        <h3>Idea</h3>
+        <p>Atrapa ideas a la velocidad del pensamiento. Texto, voz o foto — el cuaderno las acomoda solo.</p>
+        <span class="scribble">↳ captura</span>
+        <span class="arrow-link">→</span>
+      </article>
+
+      <article class="flow-step reveal delay-1">
+        <span class="glyph chat" style="width: 32px; height: 24px;"></span>
+        <span class="step-num">paso 02</span>
+        <h3>Guion</h3>
+        <p>La IA propone hook, desarrollo y cierre. Tú apruebas, editas, conservas tu voz.</p>
+        <span class="scribble">↳ estructura</span>
+        <span class="arrow-link">→</span>
+      </article>
+
+      <article class="flow-step reveal delay-2">
+        <span class="glyph feed" style="width: 32px; height: 32px;"></span>
+        <span class="step-num">paso 03</span>
+        <h3>Calendario</h3>
+        <p>Arrastra al día que quieras. Ve tu semana o mes completo de un vistazo.</p>
+        <span class="scribble">↳ tu ritmo</span>
+        <span class="arrow-link">→</span>
+      </article>
+
+      <article class="flow-step reveal delay-3">
+        <span class="glyph play" style="width: 28px; height: 28px;"></span>
+        <span class="step-num">paso 04</span>
+        <h3>Publica</h3>
+        <p>Un click, varias plataformas. O exporta y publica donde tú prefieras.</p>
+        <span class="scribble">↳ listo</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<div class="chapter-divider" aria-hidden="true">
+    <span class="spark-deco"></span>
+    <span class="spark-deco sm"></span>
+    <span class="spark-deco"></span>
+</div>
+
+<!-- ============================================================
+     TESTIMONIO
+     ============================================================ -->
+<section class="section testimonial">
+  <div class="inner reveal">
+    <span class="quotemark-big" data-parallax data-speed="0.7">"</span>
+    <blockquote>
+      Desde que uso IREAL, crear contenido para redes volvió a sentirse <em>personal</em>, no como una tarea pendiente.
+    </blockquote>
+    <div class="author">
+      <span class="avatar"></span>
+      <div class="info">
+        <div class="name">Camila R.</div>
+        <div class="role">creadora · 142k seguidores</div>
+        <span class="author-sig">— se siente como casa ↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     WHY IREAL
+     ============================================================ -->
+<section class="section why" id="why">
+  <div class="inner">
+
+    <div class="reveal">
+      <span class="eyebrow">capítulo iv · por qué ireal</span>
+      <h2>Más que una app.<br/>Un <em>santuario</em>.</h2>
+    </div>
+
+    <div class="why-grid">
+
+      <article class="why-card reveal">
+        <div class="icon-illus calm"></div>
+        <h3>Diseño en <em>calma</em>.</h3>
+        <p>Sin ruido innecesario. Solo tú, tus ideas y el contenido que quieres publicar.</p>
+        <span class="hand-mark">menos es más ↗</span>
+      </article>
+
+      <article class="why-card reveal delay-1">
+        <div class="icon-illus system">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <h3>Sistema creativo<br/>para <em>redes</em>.</h3>
+        <p>Ideas, guiones, formatos y tiempos, finalmente conectados.</p>
+        <span class="hand-mark">todo conectado ↗</span>
+      </article>
+
+      <article class="why-card reveal delay-2">
+        <div class="icon-illus focus"></div>
+        <h3>Foco total.</h3>
+        <p>Solo lo esencial para crear mejor contenido y publicar con intención.</p>
+        <span class="hand-mark">sin distracciones ↗</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PRICING
+     ============================================================ -->
+<section class="section pricing" id="pricing">
+  <div class="inner">
+    <div class="pricing-head reveal">
+      <span class="eyebrow">precios</span>
+      <h2>Para cada tipo<br/>de <em>creador</em>.</h2>
+      <p class="pricing-intro">Empieza gratis. Crece cuando estés listo.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <article class="pricing-card reveal">
+        <span class="tier">Gratis</span>
+        <div class="price">$0<span>/mes</span></div>
+        <p class="for">para empezar a explorar</p>
+        <ul class="features">
+          <li>Captura ilimitada de ideas</li>
+          <li>Calendario semanal</li>
+          <li>1 cuenta de redes</li>
+          <li>Plantillas básicas</li>
+        </ul>
+        <a href="https://ireal-app.com" class="btn btn-ghost">Empezar gratis</a>
+        <span class="hand-mark">— sin tarjeta ↗</span>
+      </article>
+
+      <article class="pricing-card featured reveal delay-1">
+        <span class="badge">más elegido</span>
+        <span class="tier">Creador</span>
+        <div class="price">$9<span>/mes</span></div>
+        <p class="for">para creadores en crecimiento</p>
+        <ul class="features">
+          <li>Todo lo de Gratis</li>
+          <li>IA para hooks y guiones</li>
+          <li>Hasta 5 cuentas de redes</li>
+          <li>Plantillas premium</li>
+          <li>Programación automática</li>
+        </ul>
+        <a href="https://ireal-app.com" class="btn">Empezar prueba <span class="arrow"></span></a>
+        <span class="hand-mark">— 14 días gratis ↗</span>
+      </article>
+
+      <article class="pricing-card reveal delay-2">
+        <span class="tier">Estudio</span>
+        <div class="price">$19<span>/mes</span></div>
+        <p class="for">para equipos y agencias</p>
+        <ul class="features">
+          <li>Todo lo de Creador</li>
+          <li>Hasta 5 miembros</li>
+          <li>Analítica avanzada</li>
+          <li>API y exportación</li>
+          <li>Soporte prioritario</li>
+        </ul>
+        <a href="https://ireal-app.com" class="btn btn-ghost">Hablar con ventas</a>
+        <span class="hand-mark">— a tu medida ↗</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CTA FINAL
+     ============================================================ -->
+<section class="section cta-final" id="cta">
+
+  <!-- floating sparks -->
+  <div class="layer" aria-hidden="true">
+    <span class="spark-deco" style="top: 14%; left: 12%;" data-parallax data-speed="0.4"></span>
+    <span class="spark-deco" style="top: 18%; right: 14%; width: 14px; height: 14px;" data-parallax data-speed="0.5"></span>
+    <span class="spark-deco" style="bottom: 18%; left: 18%; width: 12px; height: 12px;" data-parallax data-speed="0.55"></span>
+    <span class="spark-deco" style="bottom: 24%; right: 16%;" data-parallax data-speed="0.45"></span>
+    <span class="dot-stamp lg" style="top: 30%; left: 8%;" data-parallax data-speed="0.35"></span>
+    <span class="dot-stamp" style="bottom: 32%; right: 10%;" data-parallax data-speed="0.4"></span>
+    <span class="dot-stamp sm" style="top: 50%; left: 24%;" data-parallax data-speed="0.5"></span>
+  </div>
+
+  <div class="inner reveal">
+    <h2>Tu mejor contenido<br/>empieza con una <em>idea clara</em>.</h2>
+    <div class="cta-stack">
+      <a href="https://ireal-app.com" class="btn" style="font-size: 12px; padding: 16px 32px">Crear mi cuenta gratis <span class="arrow"></span></a>
+      <span class="micro">empieza en menos de un minuto ↗</span>
+    </div>
+
+    <div class="deco-row">
+      <span>sin tarjeta</span>
+      <span class="dot"></span>
+      <span>14 días gratis</span>
+      <span class="dot"></span>
+      <span>cancelas cuando quieras</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section faq" id="faq">
+  <div class="inner">
+
+    <div class="head reveal">
+      <span class="eyebrow">preguntas</span>
+      <h2>Antes de<br/>abrir el <em>cuaderno</em>.</h2>
+      <span class="scrib">— resolvemos lo importante ↗</span>
+    </div>
+
+    <div class="list">
+      <details open>
+        <summary><h4>¿IREAL es para mí?</h4><span class="pm">+</span></summary>
+        <p class="ans">Si creas contenido para redes sociales y quieres orden, claridad y constancia, sí. IREAL está pensado para creadores que prefieren un solo lugar profundo a diez apps superficiales.</p>
+      </details>
+
+      <details>
+        <summary><h4>¿Reemplaza mis herramientas actuales?</h4><span class="pm">+</span></summary>
+        <p class="ans">Centraliza la ideación, planificación y estructura de tu contenido. Puedes seguir usando tus apps favoritas para publicar si lo deseas — o publicar directo desde aquí.</p>
+      </details>
+
+      <details>
+        <summary><h4>¿Tiene costo?</h4><span class="pm">+</span></summary>
+        <p class="ans">Puedes empezar totalmente gratis. Tenemos planes para cuando necesites más potencia (IA avanzada, multi-cuenta, programación automática).</p>
+      </details>
+
+      <details>
+        <summary><h4>¿Qué tan rápido puedo empezar?</h4><span class="pm">+</span></summary>
+        <p class="ans">En menos de un minuto tendrás tu cuaderno listo para escribir.</p>
+      </details>
+
+      <details>
+        <summary><h4>¿Y mis ideas? ¿Están seguras?</h4><span class="pm">+</span></summary>
+        <p class="ans">Tu cuaderno es tuyo. Cifrado en tránsito y en reposo. Exporta cuando quieras. No entrenamos modelos con tu contenido sin permiso explícito.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+    </main>
+
+    <!-- K) FOOTER — Cloud Design 4-column footer with IREAL SVG logo -->
     <footer class="footer">
-        <div class="container text-center">
-            <p>© 2026 IREAL · <a href="#">Privacidad</a> · <a href="#">Términos</a> · <a href="#">Contacto</a></p>
+        <div class="footer-inner">
+            <div class="brand-block">
+                <img src="logos/Logo completo.svg" alt="IREAL" class="footer-logo">
+                <p>El workspace mágico para creadores de contenido. Un cuaderno vivo donde idea, guion, calendario y publicación finalmente se conectan.</p>
+            </div>
+            <div class="col">
+                <span class="label">producto</span>
+                <a href="#features">Sistema</a>
+                <a href="#why">Por qué</a>
+                <a href="#pricing">Precios</a>
+                <a href="#faq">Preguntas</a>
+            </div>
+            <div class="col">
+                <span class="label">compañía</span>
+                <a href="#manifesto">¿Qué es?</a>
+                <a href="#">Equipo</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="col">
+                <span class="label">legal</span>
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
+                <a href="#">Cookies</a>
+            </div>
+        </div>
+        <div class="bottom">
+            <span>© 2026 IREAL · cuaderno mágico</span>
+            <span class="sig">hecho con magia ↗</span>
         </div>
     </footer>
 
